@@ -6,6 +6,8 @@
     "serve": "webpack-dev-server"
   },
   "dependencies": {
+    "@bugsnag/js": "^6.4.2",
+    "@bugsnag/plugin-react": "^6.4.0",
     "@ndn/fw": "https://ndnts-nightly.netlify.com/fw.tgz",
     "@ndn/l3face": "https://ndnts-nightly.netlify.com/l3face.tgz",
     "@ndn/l3pkt": "https://ndnts-nightly.netlify.com/l3pkt.tgz",

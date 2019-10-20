@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import { bugsnagClient } from "../bugsnag";
 import { fetchNameLsas } from "../logic";
 import { NameLsa } from "../model";
 import { NameLsaList } from "./name-lsa-list";
@@ -43,8 +44,7 @@ export class App extends React.Component<{}, State> {
     fetchNameLsas()
     .then(
       (nameLsas) => this.setState({ nameLsas }),
-      // tslint:disable-next-line:no-console
-      console.warn,
+      bugsnagClient.notify,
     );
   }
 }
