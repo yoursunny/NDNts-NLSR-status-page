@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "lint": "tslint --fix -p .",
+    "serve": "webpack-dev-server"
+  },
+  "dependencies": {
+    "@ndn/fw": "https://ndnts-nightly.netlify.com/fw.tgz",
+    "@ndn/l3face": "https://ndnts-nightly.netlify.com/l3face.tgz",
+    "@ndn/l3pkt": "https://ndnts-nightly.netlify.com/l3pkt.tgz",
+    "@ndn/lp": "https://ndnts-nightly.netlify.com/lp.tgz",
+    "@ndn/name": "https://ndnts-nightly.netlify.com/name.tgz",
+    "@ndn/naming-convention-02": "https://ndnts-nightly.netlify.com/naming-convention-02.tgz",
+    "@ndn/segmented-object": "https://ndnts-nightly.netlify.com/segmented-object.tgz",
+    "@ndn/tlv": "https://ndnts-nightly.netlify.com/tlv.tgz",
+    "@ndn/ws-transport": "https://ndnts-nightly.netlify.com/ws-transport.tgz",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.9",
+    "@types/react-dom": "^16.9.2",
+    "ts-loader": "^6.2.0",
+    "tslint": "^5.20.0",
+    "tslint-react": "^4.1.0",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.8.2"
+  }
+}
