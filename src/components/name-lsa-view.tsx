@@ -1,6 +1,6 @@
+import { Name } from "@ndn/name";
 import * as React from "react";
 
-import { Name } from "@ndn/name";
 import { NameLsa } from "../model";
 
 interface Props {
