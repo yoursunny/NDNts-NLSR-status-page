@@ -8,10 +8,8 @@
   "dependencies": {
     "@bugsnag/js": "^6.4.3",
     "@bugsnag/plugin-react": "^6.4.0",
+    "@ndn/fch": "https://ndnts-nightly.netlify.com/fch.tgz",
     "@ndn/fw": "https://ndnts-nightly.netlify.com/fw.tgz",
-    "@ndn/l3face": "https://ndnts-nightly.netlify.com/l3face.tgz",
-    "@ndn/l3pkt": "https://ndnts-nightly.netlify.com/l3pkt.tgz",
-    "@ndn/lp": "https://ndnts-nightly.netlify.com/lp.tgz",
     "@ndn/name": "https://ndnts-nightly.netlify.com/name.tgz",
     "@ndn/naming-convention-02": "https://ndnts-nightly.netlify.com/naming-convention-02.tgz",
     "@ndn/segmented-object": "https://ndnts-nightly.netlify.com/segmented-object.tgz",

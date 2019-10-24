@@ -1,17 +1,23 @@
-import { Forwarder } from "@ndn/fw";
-import { L3Face } from "@ndn/l3face";
+import { connectToTestbed } from "@ndn/fch";
+import { FwTracer } from "@ndn/fw";
 import { Name } from "@ndn/name";
 import { Segment as Segment02, Version as Version02 } from "@ndn/naming-convention-02";
 import { discoverVersion, fetch } from "@ndn/segmented-object";
 import { Decoder } from "@ndn/tlv";
-import { WsTransport } from "@ndn/ws-transport";
 
 import { NameLsa } from "./model/name-lsa";
 
+FwTracer.enable();
+
 export async function connect(): Promise<void> {
-  const transport = await WsTransport.connect("wss://titan.cs.memphis.edu/ws/");
-  const face = Forwarder.getDefault().addFace(new L3Face(transport));
-  face.addRoute(new Name("/"));
+  const faces = await connectToTestbed({ count: 4 });
+  faces.forEach((face, i) => {
+    if (i > 0) {
+      face.close();
+    } else {
+      face.addRoute(new Name("/"));
+    }
+  });
 }
 
 export async function fetchNameLsas(): Promise<NameLsa[]> {
