@@ -9,9 +9,11 @@ import { connect } from "./logic";
 bugsnagClient.use(bugsnagReact, React);
 
 async function main() {
+  let connectedRouter: string;
   try {
-    await connect();
+    connectedRouter = await connect();
   } catch (err) {
+    alert(err);
     bugsnagClient.notify(err);
     return;
   }
@@ -19,7 +21,7 @@ async function main() {
   ReactDOM.render(
     (
       <ErrorBoundary>
-        <App/>
+        <App connectedRouter={connectedRouter}/>
       </ErrorBoundary>
     ), document.getElementById("app"));
 }

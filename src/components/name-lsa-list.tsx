@@ -17,9 +17,20 @@ export class NameLsaList extends React.Component<Props> {
             <th>Prefix</th>
           </tr>
         </thead>
-        <tbody>{this.props.list.map(this.renderLsa)}</tbody>
+        <tbody>{this.renderBody()}</tbody>
       </table>
     );
+  }
+
+  private renderBody() {
+    if (this.props.list.length === 0) {
+      return (
+        <tr>
+          <td colSpan={2}>loading</td>
+        </tr>
+      );
+    }
+    return this.props.list.map(this.renderLsa);
   }
 
   private renderLsa(lsa: NameLsa) {

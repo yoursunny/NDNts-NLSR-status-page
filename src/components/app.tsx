@@ -5,16 +5,22 @@ import { fetchNameLsas } from "../logic";
 import { NameLsa } from "../model";
 import { NameLsaList } from "./name-lsa-list";
 
+interface Props {
+  connectedRouter: string;
+}
+
 interface State {
   nameLsas: NameLsa[];
 }
 
-export class App extends React.Component<{}, State> {
+export class App extends React.Component<Props, State> {
   private refreshTimer = 0;
 
   constructor(props) {
     super(props);
-    this.state = { nameLsas: [] };
+    this.state = {
+      nameLsas: [],
+    };
   }
 
   public componentDidMount() {
@@ -28,15 +34,11 @@ export class App extends React.Component<{}, State> {
   }
 
   public render() {
-    if (this.state.nameLsas.length === 0) {
-      return (
-        <div>
-          loading
-        </div>
-      );
-    }
     return (
-      <NameLsaList list={this.state.nameLsas}/>
+      <React.Fragment>
+        <NameLsaList list={this.state.nameLsas}/>
+        <p>Connected to <code>{this.props.connectedRouter}</code>.</p>
+      </React.Fragment>
     );
   }
 

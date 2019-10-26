@@ -1,4 +1,4 @@
-import { connectToTestbed } from "@ndn/fch";
+import { connectToTestbed } from "@ndn/autoconfig";
 import { FwTracer } from "@ndn/fw";
 import { Name } from "@ndn/name";
 import { Segment as Segment02, Version as Version02 } from "@ndn/naming-convention-02";
@@ -9,28 +9,26 @@ import { NameLsa } from "./model/name-lsa";
 
 FwTracer.enable();
 
-export async function connect(): Promise<void> {
-  const faces = await connectToTestbed({ count: 4 });
-  faces.forEach((face, i) => {
-    if (i > 0) {
-      face.close();
-    } else {
-      face.addRoute(new Name("/"));
-    }
+export async function connect(): Promise<string> {
+  const faces = await connectToTestbed({
+    count: 4,
+    preferFastest: true,
   });
+  if (faces.length < 1) {
+    throw new Error("unable to connect to NDN testbed");
+  }
+  faces[0].addRoute(new Name("/"));
+  return faces[0].toString();
 }
 
 export async function fetchNameLsas(): Promise<NameLsa[]> {
-  // find version number
-  const versioned = await discoverVersion(
-    new Name("/ndn/edu/arizona/%C1.Router/hobo/nlsr/lsdb/names"),
-    {
-      segmentNumConvention: Segment02,
-      versionConvention: Version02,
-    });
-
-  // retrieve segmented object with version number
-  const dataset = await fetch(versioned, { segmentNumConvention: Segment02 }).promise;
+  const name = new Name("/ndn/edu/arizona/%C1.Router/hobo/nlsr/lsdb/names");
+  const dataset = await discoverVersion(name, {
+    segmentNumConvention: Segment02,
+    versionConvention: Version02,
+  }).then((versioned) => fetch(versioned, {
+    segmentNumConvention: Segment02,
+  }).promise);
 
   const decoder = new Decoder(dataset);
   const list = [] as NameLsa[];

@@ -14,6 +14,8 @@ This project demonstrates these NDNts capabilities:
   Its flexibility allows us to decode NLSR's `NameLsa` structure with very little code.
 * `fetch` function from `@ndn/segmented-object`.
   It can retrieve segmented object, such as the LSDB dataset.
+* `connectToTestbed` function from `@ndn/autoconfig`.
+  It automatically finds an available testbed router via NDN-FCH service, and avoids single point of failure.
 
 Build instructions:
 
