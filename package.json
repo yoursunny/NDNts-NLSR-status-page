@@ -11,7 +11,7 @@
     "@ndn/autoconfig": "https://ndnts-nightly.netlify.com/autoconfig.tgz",
     "@ndn/fw": "https://ndnts-nightly.netlify.com/fw.tgz",
     "@ndn/name": "https://ndnts-nightly.netlify.com/name.tgz",
-    "@ndn/naming-convention-02": "https://ndnts-nightly.netlify.com/naming-convention-02.tgz",
+    "@ndn/naming-convention1": "https://ndnts-nightly.netlify.com/naming-convention1.tgz",
     "@ndn/segmented-object": "https://ndnts-nightly.netlify.com/segmented-object.tgz",
     "@ndn/tlv": "https://ndnts-nightly.netlify.com/tlv.tgz",
     "@ndn/ws-transport": "https://ndnts-nightly.netlify.com/ws-transport.tgz",
