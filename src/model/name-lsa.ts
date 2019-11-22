@@ -1,4 +1,4 @@
-import { Name, TT } from "@ndn/name";
+import { Name, TT } from "@ndn/packet";
 import { Decoder, EvDecoder } from "@ndn/tlv";
 
 import { Lsa } from "./lsa";

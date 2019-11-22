@@ -1,7 +1,7 @@
 import { connectToTestbed } from "@ndn/autoconfig";
 import { FwTracer } from "@ndn/fw";
-import { Name } from "@ndn/name";
 import { Segment, Version } from "@ndn/naming-convention1";
+import { Name } from "@ndn/packet";
 import { discoverVersion, fetch } from "@ndn/segmented-object";
 import { Decoder } from "@ndn/tlv";
 

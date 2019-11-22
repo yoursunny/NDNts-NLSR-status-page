@@ -1,4 +1,4 @@
-import { Name } from "@ndn/name";
+import { Name } from "@ndn/packet";
 import * as React from "react";
 
 import { NameLsa } from "../model";

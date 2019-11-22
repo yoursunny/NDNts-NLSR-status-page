@@ -10,13 +10,13 @@
     "@bugsnag/plugin-react": "^6.4.0",
     "@ndn/autoconfig": "https://ndnts-nightly.netlify.com/autoconfig.tgz",
     "@ndn/fw": "https://ndnts-nightly.netlify.com/fw.tgz",
-    "@ndn/name": "https://ndnts-nightly.netlify.com/name.tgz",
     "@ndn/naming-convention1": "https://ndnts-nightly.netlify.com/naming-convention1.tgz",
+    "@ndn/packet": "https://ndnts-nightly.netlify.com/packet.tgz",
     "@ndn/segmented-object": "https://ndnts-nightly.netlify.com/segmented-object.tgz",
     "@ndn/tlv": "https://ndnts-nightly.netlify.com/tlv.tgz",
     "@ndn/ws-transport": "https://ndnts-nightly.netlify.com/ws-transport.tgz",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.9",

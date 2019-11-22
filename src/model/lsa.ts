@@ -1,4 +1,4 @@
-import { Name } from "@ndn/name";
+import { Name } from "@ndn/packet";
 import { Decoder, EvDecoder } from "@ndn/tlv";
 
 const EVD = new EvDecoder<Lsa>("LsaInfo", 0x80)
