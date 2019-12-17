@@ -11,7 +11,9 @@ FwTracer.enable();
 
 export async function connect(): Promise<string> {
   const faces = await connectToTestbed({
+    connectTimeout: 5000,
     count: 4,
+    fchFallback: ["hobo.cs.arizona.edu", "titan.cs.memphis.edu"],
     preferFastest: true,
   });
   if (faces.length < 1) {
@@ -26,9 +28,9 @@ export async function fetchNameLsas(): Promise<NameLsa[]> {
   const dataset = await discoverVersion(name, {
     segmentNumConvention: Segment,
     versionConvention: Version,
-  }).then((versioned) => fetch(versioned, {
+  }).then((versioned) => fetch.promise(versioned, {
     segmentNumConvention: Segment,
-  }).promise);
+  }));
 
   const decoder = new Decoder(dataset);
   const list = [] as NameLsa[];
