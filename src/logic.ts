@@ -25,12 +25,13 @@ export async function connect(): Promise<string> {
 
 export async function fetchNameLsas(): Promise<NameLsa[]> {
   const name = new Name("/ndn/edu/arizona/%C1.Router/hobo/nlsr/lsdb/names");
-  const dataset = await discoverVersion(name, {
+  const versioned = await discoverVersion(name, {
     segmentNumConvention: Segment,
     versionConvention: Version,
-  }).then((versioned) => fetch.promise(versioned, {
+  });
+  const dataset = await fetch.promise(versioned, {
     segmentNumConvention: Segment,
-  }));
+  });
 
   const decoder = new Decoder(dataset);
   const list = [] as NameLsa[];
