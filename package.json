@@ -15,6 +15,7 @@
     "@ndn/segmented-object": "https://ndnts-nightly.netlify.com/segmented-object.tgz",
     "@ndn/tlv": "https://ndnts-nightly.netlify.com/tlv.tgz",
     "@ndn/ws-transport": "https://ndnts-nightly.netlify.com/ws-transport.tgz",
+    "p-any": "^3.0.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   },
@@ -24,6 +25,7 @@
     "eslint-config-xo-react": "^0.23.0",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
+    "eslint-plugin-simple-import-sort": "^5.0.2",
     "ts-loader": "^6.2.1",
     "typescript": "^3.8.2",
     "webpack": "^4.41.6",

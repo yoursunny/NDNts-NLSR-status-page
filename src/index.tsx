@@ -4,7 +4,7 @@ import * as ReactDOM from "react-dom";
 
 import { bugsnagClient } from "./bugsnag";
 import { App } from "./components/app";
-import { connect } from "./logic";
+import { connect } from "./connect";
 
 bugsnagClient.use(bugsnagReact, React);
 

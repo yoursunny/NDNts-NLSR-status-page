@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { bugsnagClient } from "../bugsnag";
-import { fetchNameLsas } from "../logic";
+import { fetchNameLsas } from "../fetch";
 import { NameLsa } from "../model";
 import { NameLsaList } from "./name-lsa-list";
 
