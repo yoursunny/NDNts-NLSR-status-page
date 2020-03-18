@@ -15,13 +15,9 @@ interface State {
 
 export class App extends React.Component<Props, State> {
   private refreshTimer = 0;
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      nameLsas: [],
-    };
-  }
+  state = {
+    nameLsas: [],
+  };
 
   public componentDidMount() {
     this.refreshTimer = setInterval(this.refresh, 10000) as unknown as number;
@@ -35,18 +31,18 @@ export class App extends React.Component<Props, State> {
 
   public render() {
     return (
-      <React.Fragment>
+      <>
         <NameLsaList list={this.state.nameLsas}/>
         <p>Connected to <code>{this.props.connectedRouter}</code>.</p>
-      </React.Fragment>
+      </>
     );
   }
 
   private refresh = () => {
     fetchNameLsas()
-    .then(
-      (nameLsas) => this.setState({ nameLsas }),
-      bugsnagClient.notify,
-    );
-  }
+      .then(
+        (nameLsas) => this.setState({ nameLsas }),
+        bugsnagClient.notify,
+      );
+  };
 }

@@ -13,7 +13,6 @@ async function main() {
   try {
     connectedRouter = await connect();
   } catch (err) {
-    alert(err);
     bugsnagClient.notify(err);
     return;
   }
@@ -23,7 +22,7 @@ async function main() {
       <ErrorBoundary>
         <App connectedRouter={connectedRouter}/>
       </ErrorBoundary>
-    ), document.getElementById("app"));
+    ), document.querySelector("#app"));
 }
 
 document.addEventListener("DOMContentLoaded", main);

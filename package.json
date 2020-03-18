@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "webpack",
-    "lint": "tslint --fix -p .",
+    "lint": "xo --fix",
     "serve": "webpack-dev-server"
   },
   "dependencies": {
@@ -21,12 +21,14 @@
   "devDependencies": {
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
+    "eslint-config-xo-react": "^0.23.0",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
     "ts-loader": "^6.2.1",
-    "tslint": "^5.20.1",
-    "tslint-react": "^4.2.0",
     "typescript": "^3.8.2",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.10.3",
+    "xo": "^0.28.0"
   }
 }

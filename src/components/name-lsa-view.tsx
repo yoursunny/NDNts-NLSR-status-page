@@ -9,11 +9,7 @@ interface Props {
 
 export class NameLsaView extends React.Component<Props> {
   public render() {
-    return (
-      <React.Fragment>
-        {this.props.lsa.names.map(this.renderRow)}
-      </React.Fragment>
-    );
+    return this.props.lsa.names.map(this.renderRow);
   }
 
   private renderOrigin() {
@@ -39,5 +35,5 @@ export class NameLsaView extends React.Component<Props> {
         <td>{nameStr}</td>
       </tr>
     );
-  }
+  };
 }

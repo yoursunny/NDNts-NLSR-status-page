@@ -16,7 +16,7 @@ export async function connect(): Promise<string> {
     fchFallback: ["hobo.cs.arizona.edu", "titan.cs.memphis.edu"],
     preferFastest: true,
   });
-  if (faces.length < 1) {
+  if (faces.length === 0) {
     throw new Error("unable to connect to NDN testbed");
   }
   faces[0].addRoute(new Name("/"));
