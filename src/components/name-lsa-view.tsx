@@ -1,4 +1,5 @@
-import { Name } from "@ndn/packet";
+import { AltUri, Name } from "@ndn/packet";
+import { toHex } from "@ndn/tlv";
 import * as React from "react";
 
 import { NameLsa } from "../model";
@@ -16,7 +17,7 @@ export class NameLsaView extends React.Component<Props> {
     const lsa = this.props.lsa;
     return (
       <td rowSpan={Math.max(lsa.names.length, 1)}>
-        {lsa.originRouter.toString()}
+        {AltUri.ofName(lsa.originRouter)}
         <small>
           <br/>
           seqNum={lsa.sequenceNumber}
@@ -28,11 +29,10 @@ export class NameLsaView extends React.Component<Props> {
   }
 
   private renderRow = (name: Name, index: number) => {
-    const nameStr = name.toString();
     return (
-      <tr key={nameStr}>
+      <tr key={toHex(name.value)}>
         {index === 0 ? this.renderOrigin() : undefined}
-        <td>{nameStr}</td>
+        <td>{AltUri.ofName(name)}</td>
       </tr>
     );
   };
