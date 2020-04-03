@@ -1,13 +1,13 @@
 import * as React from "react";
 
-import { NameLsa } from "../model";
-import { NameLsaView } from "./name-lsa-view";
+import { RouterLsa } from "../fetch";
+import { RouterView } from "./router-view";
 
 interface Props {
-  list: NameLsa[];
+  list: RouterLsa[];
 }
 
-export class NameLsaList extends React.Component<Props> {
+export class RouterList extends React.Component<Props> {
   public render() {
     return (
       <table className="pure-table pure-table-bordered">
@@ -15,6 +15,7 @@ export class NameLsaList extends React.Component<Props> {
           <tr>
             <th>Router</th>
             <th>Prefix</th>
+            <th>Coordinates</th>
           </tr>
         </thead>
         <tbody>{this.renderBody()}</tbody>
@@ -30,10 +31,10 @@ export class NameLsaList extends React.Component<Props> {
         </tr>
       );
     }
-    return this.props.list.map(this.renderLsa);
+    return this.props.list.map(this.renderRouter);
   }
 
-  private renderLsa(lsa: NameLsa) {
-    return <NameLsaView key={lsa.originRouter.toString()} lsa={lsa}/>;
+  private renderRouter({ originRouter, nameLsa, coordinateLsa }: RouterLsa) {
+    return <RouterView key={originRouter} nameLsa={nameLsa} coordinateLsa={coordinateLsa}/>;
   }
 }

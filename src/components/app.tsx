@@ -1,22 +1,21 @@
 import * as React from "react";
 
 import { bugsnagClient } from "../bugsnag";
-import { fetchNameLsas } from "../fetch";
-import { NameLsa } from "../model";
-import { NameLsaList } from "./name-lsa-list";
+import { fetchLsas, RouterLsa } from "../fetch";
+import { RouterList } from "./router-list";
 
 interface Props {
   connectedRouter: string;
 }
 
 interface State {
-  nameLsas: NameLsa[];
+  lsas: RouterLsa[];
 }
 
 export class App extends React.Component<Props, State> {
   private refreshTimer = 0;
   state = {
-    nameLsas: [],
+    lsas: [],
   };
 
   public componentDidMount() {
@@ -32,16 +31,16 @@ export class App extends React.Component<Props, State> {
   public render() {
     return (
       <>
-        <NameLsaList list={this.state.nameLsas}/>
+        <RouterList list={this.state.lsas}/>
         <p>Connected to <code>{this.props.connectedRouter}</code>.</p>
       </>
     );
   }
 
   private refresh = () => {
-    fetchNameLsas()
+    fetchLsas()
       .then(
-        (nameLsas) => this.setState({ nameLsas }),
+        (lsas) => this.setState({ lsas }),
         bugsnagClient.notify,
       );
   };

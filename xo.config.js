@@ -54,6 +54,12 @@ module.exports = {
   rules,
   overrides: [
     {
+      files: ["webpack.config.js"],
+      rules: {
+        "import/no-extraneous-dependencies": "off",
+      },
+    },
+    {
       files: ["**/*.ts", "**/*.tsx"],
       rules: {
         "@typescript-eslint/ban-types": "off",
@@ -71,6 +77,8 @@ module.exports = {
         "@typescript-eslint/unified-signatures": "off",
         "brace-style": "off",
         indent: "off",
+        "no-unused-vars": "off",
+        "no-useless-constructor": "off",
         quotes: "off",
       },
     },

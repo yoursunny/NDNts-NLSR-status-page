@@ -7,11 +7,11 @@ const EVD = new EvDecoder<Lsa>("LsaInfo", 0x80)
   .add(0x8B, (t, { nni }) => t.expirationPeriod = nni);
 
 export abstract class Lsa {
-  public originRouter = new Name();
-  public sequenceNumber = 0;
-  public expirationPeriod = Infinity;
-
   public decodeLsaInfo(decoder: Decoder) {
     EVD.decode(this, decoder);
   }
+
+  public originRouter = new Name();
+  public sequenceNumber = 0;
+  public expirationPeriod = Infinity;
 }
