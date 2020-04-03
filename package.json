@@ -8,29 +8,29 @@
   "dependencies": {
     "@bugsnag/js": "^6.5.2",
     "@bugsnag/plugin-react": "^6.5.0",
-    "@ndn/autoconfig": "https://ndnts-nightly.netlify.com/autoconfig.tgz",
-    "@ndn/fw": "https://ndnts-nightly.netlify.com/fw.tgz",
-    "@ndn/naming-convention1": "https://ndnts-nightly.netlify.com/naming-convention1.tgz",
-    "@ndn/packet": "https://ndnts-nightly.netlify.com/packet.tgz",
-    "@ndn/segmented-object": "https://ndnts-nightly.netlify.com/segmented-object.tgz",
-    "@ndn/tlv": "https://ndnts-nightly.netlify.com/tlv.tgz",
-    "@ndn/ws-transport": "https://ndnts-nightly.netlify.com/ws-transport.tgz",
+    "@ndn/autoconfig": "https://ndnts-nightly.netlify.app/autoconfig.tgz",
+    "@ndn/fw": "https://ndnts-nightly.netlify.app/fw.tgz",
+    "@ndn/naming-convention1": "https://ndnts-nightly.netlify.app/naming-convention1.tgz",
+    "@ndn/packet": "https://ndnts-nightly.netlify.app/packet.tgz",
+    "@ndn/segmented-object": "https://ndnts-nightly.netlify.app/segmented-object.tgz",
+    "@ndn/tlv": "https://ndnts-nightly.netlify.app/tlv.tgz",
+    "@ndn/ws-transport": "https://ndnts-nightly.netlify.app/ws-transport.tgz",
+    "@types/react": "^16.9.32",
+    "@types/react-dom": "^16.9.6",
     "p-any": "^3.0.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@types/react": "^16.9.23",
-    "@types/react-dom": "^16.9.5",
     "eslint-config-xo-react": "^0.23.0",
     "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^2.5.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
     "eslint-plugin-simple-import-sort": "^5.0.2",
-    "ts-loader": "^6.2.1",
+    "ts-loader": "^6.2.2",
     "typescript": "^3.8.2",
-    "webpack": "^4.41.6",
+    "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
-    "xo": "^0.28.0"
+    "xo": "^0.28.2"
   }
 }
