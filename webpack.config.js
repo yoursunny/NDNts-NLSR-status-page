@@ -6,14 +6,18 @@ module.exports = (env, argv) => ({
   module: {
     rules: [
       {
+        test: /\.js$/,
+        loader: "ifdef-loader",
+      },
+      {
         test: /\.tsx?$/,
-        use: "ts-loader",
         exclude: /node_modules/,
+        loader: "ts-loader",
       },
       {
         test: /\.html$/,
-        use: "file-loader",
         exclude: /node_modules/,
+        loader: "file-loader",
       },
     ],
   },

@@ -26,6 +26,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
     "eslint-plugin-simple-import-sort": "^5.0.2",
+    "ifdef-loader": "^2.1.5",
     "ts-loader": "^6.2.2",
     "typescript": "^3.8.2",
     "webpack": "^4.42.1",
