@@ -30,6 +30,7 @@ module.exports = (env, argv) => ({
   },
   devServer: {
     contentBase: path.join(__dirname, "public"),
+    disableHostCheck: true,
     port: 3333,
   },
 });
