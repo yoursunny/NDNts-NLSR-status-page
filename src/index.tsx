@@ -1,22 +1,25 @@
-import bugsnagReact from "@bugsnag/plugin-react";
+import Bugsnag from "@bugsnag/browser";
+import BugsnagPluginReact from "@bugsnag/plugin-react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { bugsnagClient } from "./bugsnag";
 import { App } from "./components/app";
 import { connect } from "./connect";
 
-bugsnagClient.use(bugsnagReact, React);
+Bugsnag.start({
+  apiKey: "ea4b8d8f54ab51480dd721055e3cc0a9",
+  plugins: [new BugsnagPluginReact(React)],
+});
 
 async function main() {
   let connectedRouter: string;
   try {
     connectedRouter = await connect();
   } catch (err) {
-    bugsnagClient.notify(err);
+    Bugsnag.notify(err);
     return;
   }
-  const ErrorBoundary = bugsnagClient.getPlugin("react");
+  const ErrorBoundary = Bugsnag.getPlugin("react");
   ReactDOM.render(
     (
       <ErrorBoundary>

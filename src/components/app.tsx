@@ -1,6 +1,6 @@
+import Bugsnag from "@bugsnag/browser";
 import * as React from "react";
 
-import { bugsnagClient } from "../bugsnag";
 import { fetchLsas, RouterLsa } from "../fetch";
 import { RouterList } from "./router-list";
 
@@ -41,7 +41,7 @@ export class App extends React.Component<Props, State> {
     fetchLsas()
       .then(
         (lsas) => this.setState({ lsas }),
-        bugsnagClient.notify,
+        (err) => Bugsnag.notify(err),
       );
   };
 }
