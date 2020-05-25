@@ -1,8 +1,8 @@
 # NLSR Status Page
 
-Production site: [https://nlsr-status.netlify.app/](https://nlsr-status.netlify.app/).
+Production site: [https://nlsr-status.ndn.today/](https://nlsr-status.ndn.today/).
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/39272f39-d775-4314-8573-6d70ee8d8a7a/deploy-status)](https://nlsr-status.netlify.app/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/39272f39-d775-4314-8573-6d70ee8d8a7a/deploy-status)](https://nlsr-status.ndn.today/)
 
 NLSR status page built with [NDNts](https://yoursunny.com/p/NDNts/), inspired by [Alvy's NLSRC-status-page](https://github.com/alvyC/NLSR-status-page).
 

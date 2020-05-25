@@ -19,7 +19,7 @@ async function main() {
     Bugsnag.notify(err);
     return;
   }
-  const ErrorBoundary = Bugsnag.getPlugin("react");
+  const ErrorBoundary = Bugsnag.getPlugin("react")!.createErrorBoundary();
   ReactDOM.render(
     (
       <ErrorBoundary>
