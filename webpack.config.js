@@ -6,10 +6,6 @@ module.exports = (env, argv) => ({
   module: {
     rules: [
       {
-        test: /\.js$/,
-        loader: "ifdef-loader",
-      },
-      {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: "ts-loader",
