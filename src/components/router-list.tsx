@@ -1,4 +1,4 @@
-import * as React from "react";
+import { Component, h } from "preact";
 
 import { RouterLsa } from "../fetch";
 import { RouterView } from "./router-view";
@@ -7,7 +7,7 @@ interface Props {
   list: RouterLsa[];
 }
 
-export class RouterList extends React.Component<Props> {
+export class RouterList extends Component<Props> {
   public render() {
     return (
       <table className="pure-table pure-table-bordered">

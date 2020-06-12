@@ -15,16 +15,12 @@
     "@ndn/segmented-object": "https://ndnts-nightly.ndn.today/segmented-object.tgz",
     "@ndn/tlv": "https://ndnts-nightly.ndn.today/tlv.tgz",
     "@ndn/ws-transport": "https://ndnts-nightly.ndn.today/ws-transport.tgz",
-    "@types/react": "^16.9.36",
-    "@types/react-dom": "^16.9.8",
     "p-any": "^3.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "preact": "^10.4.4"
   },
   "devDependencies": {
-    "eslint-config-xo-react": "^0.23.0",
+    "eslint-config-xo-preact": "^1.0.0",
     "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.4",
     "eslint-plugin-simple-import-sort": "^5.0.3",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.5",

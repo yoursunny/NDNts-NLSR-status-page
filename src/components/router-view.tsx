@@ -1,6 +1,6 @@
 import { AltUri, Name } from "@ndn/packet";
 import { toHex } from "@ndn/tlv";
-import * as React from "react";
+import { Component, h } from "preact";
 
 import { CoordinateLsa, NameLsa } from "../model";
 import { LsaInfoDetail } from "./lsa-info-detail";
@@ -10,7 +10,7 @@ interface Props {
   nameLsa?: NameLsa;
 }
 
-export class RouterView extends React.Component<Props> {
+export class RouterView extends Component<Props> {
   public render() {
     const { nameLsa, coordinateLsa } = this.props;
     if (nameLsa && nameLsa.names.length > 0) {

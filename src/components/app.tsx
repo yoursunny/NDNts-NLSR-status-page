@@ -1,5 +1,5 @@
 import Bugsnag from "@bugsnag/browser";
-import * as React from "react";
+import { Component, Fragment, h } from "preact";
 
 import { fetchLsas, RouterLsa } from "../fetch";
 import { RouterList } from "./router-list";
@@ -12,7 +12,7 @@ interface State {
   lsas: RouterLsa[];
 }
 
-export class App extends React.Component<Props, State> {
+export class App extends Component<Props, State> {
   private refreshTimer = 0;
   state = {
     lsas: [],
@@ -30,10 +30,10 @@ export class App extends React.Component<Props, State> {
 
   public render() {
     return (
-      <>
+      <Fragment>
         <RouterList list={this.state.lsas}/>
         <p>Connected to <code>{this.props.connectedRouter}</code>.</p>
-      </>
+      </Fragment>
     );
   }
 

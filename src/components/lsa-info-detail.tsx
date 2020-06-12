@@ -1,11 +1,11 @@
-import * as React from "react";
+import { Component, h } from "preact";
 
 interface Props {
   sequenceNumber: bigint;
   expirationPeriod: bigint;
 }
 
-export class LsaInfoDetail extends React.Component<Props> {
+export class LsaInfoDetail extends Component<Props> {
   public render() {
     return (
       <small>
