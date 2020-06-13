@@ -1,8 +1,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const path = require("path");
 
+/** @return {import("webpack").Configuration} */
 module.exports = (env, argv) => ({
-  entry: "./src/index.tsx",
+  entry: "./src/main.tsx",
   devtool: argv.mode === "development" ? "cheap-module-eval-source-map" : "source-map",
   module: {
     rules: [
@@ -10,11 +11,6 @@ module.exports = (env, argv) => ({
         test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: "ts-loader",
-      },
-      {
-        test: /\.html$/,
-        exclude: /node_modules/,
-        loader: "file-loader",
       },
     ],
   },

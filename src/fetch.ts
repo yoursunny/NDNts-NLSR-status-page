@@ -5,15 +5,19 @@ import { Decodable, Decoder, toHex } from "@ndn/tlv";
 import pAny from "p-any";
 
 import { CoordinateLsa, Lsa, NameLsa } from "./model";
+import { getVerifier } from "./model/trust";
 
 async function fetchDataset(routerName: Name, suffix: ComponentLike[]): Promise<Uint8Array> {
+  const verifier = await getVerifier();
   const name = routerName.append(...suffix);
   const versioned = await discoverVersion(name, {
     segmentNumConvention: Segment,
     versionConvention: Version,
+    verifier,
   });
   return fetch.promise(versioned, {
     segmentNumConvention: Segment,
+    verifier,
   });
 }
 

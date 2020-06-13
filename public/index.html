@@ -14,7 +14,7 @@ body { padding: 1em; }
     <h2>About this page</h2>
     <img src="logo.svg" alt="NDNts">
     <p>This page is built with <a href="https://yoursunny.com/p/NDNts/">NDNts</a>, Named Data Networking libraries for the modern web.</p>
-    <p>Every 10 seconds, it requests <a href="https://redmine.named-data.net/projects/nlsr/wiki/LSDB_DataSet">LSDB dataset</a> from the NLSR instance on a testbed router, and then renders NameLsa and CoordinateLsa objects on a React web application.</p>
+    <p>Every 10 seconds, it requests <a href="https://redmine.named-data.net/projects/nlsr/wiki/LSDB_DataSet">LSDB dataset</a> from the NLSR instance on a testbed router, verifies the packets against a trust schema, and then renders NameLsa and CoordinateLsa objects on a Preact web application.</p>
     <p>View <a href="https://github.com/yoursunny/NDNts-NLSR-status-page">source code on GitHub</a>.</p>
   </aside>
 </div>
