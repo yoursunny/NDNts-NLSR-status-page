@@ -17,6 +17,7 @@
     "@ndn/tlv": "https://ndnts-nightly.ndn.today/tlv.tgz",
     "@ndn/trust-schema": "https://ndnts-nightly.ndn.today/trust-schema.tgz",
     "@ndn/ws-transport": "https://ndnts-nightly.ndn.today/ws-transport.tgz",
+    "ga-lite": "^2.0.5",
     "p-any": "^3.0.0",
     "preact": "^10.4.6"
   },

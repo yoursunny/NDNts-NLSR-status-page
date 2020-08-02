@@ -1,15 +1,20 @@
 import Bugsnag from "@bugsnag/browser";
 import BugsnagPluginReact from "@bugsnag/plugin-react";
+import galite from "ga-lite";
 import * as Preact from "preact";
-import { h, render } from "preact";
+import { Fragment, h, render } from "preact";
 
 import { App } from "./components/app";
 import { connect } from "./connect";
 
-Bugsnag.start({
-  apiKey: "ea4b8d8f54ab51480dd721055e3cc0a9",
-  plugins: [new BugsnagPluginReact(Preact)],
-});
+if (location.hostname.endsWith(".ndn.today")) {
+  galite("create", "UA-935676-11", "auto");
+  galite("send", "pageview");
+  Bugsnag.start({
+    apiKey: "ea4b8d8f54ab51480dd721055e3cc0a9",
+    plugins: [new BugsnagPluginReact(Preact)],
+  });
+}
 
 async function main() {
   let connectedRouter: string;
@@ -19,7 +24,7 @@ async function main() {
     Bugsnag.notify(err);
     return;
   }
-  const ErrorBoundary = Bugsnag.getPlugin("react")!.createErrorBoundary();
+  const ErrorBoundary = Bugsnag.getPlugin("react")?.createErrorBoundary() ?? Fragment;
   render(
     (
       <ErrorBoundary>
