@@ -10,7 +10,12 @@ interface Props {
 export class RouterList extends Component<Props> {
   public render() {
     return (
-      <table className="pure-table pure-table-bordered">
+      <table className="pure-table pure-table-bordered" style="table-layout:fixed; margin-right:1ex;">
+        <colgroup>
+          <col style="width:30%;"/>
+          <col style="width:50%;"/>
+          <col style="width:20%;"/>
+        </colgroup>
         <thead>
           <tr>
             <th>Router</th>
@@ -27,7 +32,7 @@ export class RouterList extends Component<Props> {
     if (this.props.list.length === 0) {
       return (
         <tr>
-          <td colSpan={2}>loading</td>
+          <td colSpan={3}>loading</td>
         </tr>
       );
     }

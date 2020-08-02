@@ -20,6 +20,7 @@ export class RouterView extends Component<Props> {
       <tr key={toHex(coordinateLsa!.originRouter.value)}>
         {this.renderOrigin()}
         <td>&nbsp;</td>
+        {this.renderCoordinate()}
       </tr>
     );
   }

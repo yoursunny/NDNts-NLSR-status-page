@@ -43,7 +43,7 @@ lsdbdata <= routercert <= operatorcert <= sitecert <= rootcert
 
 async function makeVerifier(): Promise<Verifier> {
   const rootCert = Certificate.fromData(NDN_TESTBED_ROOT_V2_DATA);
-  await rootCert.loadPublicKey();
+  await rootCert.createVerifier();
   const policy = versec2019.load(POLICY);
   const schema = new TrustSchema(policy, [rootCert]);
   return new TrustSchemaVerifier({ schema });

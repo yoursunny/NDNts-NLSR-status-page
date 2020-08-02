@@ -6,8 +6,8 @@
     "serve": "webpack-dev-server"
   },
   "dependencies": {
-    "@bugsnag/browser": "^7.1.1",
-    "@bugsnag/plugin-react": "^7.1.1",
+    "@bugsnag/browser": "^7.2.1",
+    "@bugsnag/plugin-react": "^7.2.1",
     "@ndn/autoconfig": "https://ndnts-nightly.ndn.today/autoconfig.tgz",
     "@ndn/fw": "https://ndnts-nightly.ndn.today/fw.tgz",
     "@ndn/keychain": "https://ndnts-nightly.ndn.today/keychain.tgz",
@@ -18,17 +18,17 @@
     "@ndn/trust-schema": "https://ndnts-nightly.ndn.today/trust-schema.tgz",
     "@ndn/ws-transport": "https://ndnts-nightly.ndn.today/ws-transport.tgz",
     "p-any": "^3.0.0",
-    "preact": "^10.4.4"
+    "preact": "^10.4.6"
   },
   "devDependencies": {
     "eslint-config-xo-preact": "^1.0.0",
-    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-simple-import-sort": "^5.0.3",
-    "ts-loader": "^7.0.5",
-    "typescript": "^3.9.5",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
+    "ts-loader": "^8.0.2",
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "xo": "^0.32.0"
+    "xo": "^0.32.1"
   }
 }
