@@ -10,7 +10,7 @@ interface Props {
 export class RouterList extends Component<Props> {
   public render() {
     return (
-      <table className="pure-table pure-table-bordered" style="table-layout:fixed; margin-right:1ex;">
+      <table className="pure-table pure-table-bordered" style="table-layout:fixed; width:98%; word-break:break-all;">
         <colgroup>
           <col style="width:30%;"/>
           <col style="width:50%;"/>

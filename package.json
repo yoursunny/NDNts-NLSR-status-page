@@ -3,11 +3,12 @@
   "scripts": {
     "build": "webpack",
     "lint": "xo --fix",
+    "pnpm-install": "pnpm install --shamefully-hoist",
     "serve": "webpack-dev-server"
   },
   "dependencies": {
-    "@bugsnag/browser": "^7.2.1",
-    "@bugsnag/plugin-react": "^7.2.1",
+    "@bugsnag/browser": "^7.3.0",
+    "@bugsnag/plugin-react": "^7.3.1",
     "@ndn/autoconfig": "https://ndnts-nightly.ndn.today/autoconfig.tgz",
     "@ndn/fw": "https://ndnts-nightly.ndn.today/fw.tgz",
     "@ndn/keychain": "https://ndnts-nightly.ndn.today/keychain.tgz",
@@ -17,19 +18,19 @@
     "@ndn/tlv": "https://ndnts-nightly.ndn.today/tlv.tgz",
     "@ndn/trust-schema": "https://ndnts-nightly.ndn.today/trust-schema.tgz",
     "@ndn/ws-transport": "https://ndnts-nightly.ndn.today/ws-transport.tgz",
-    "ga-lite": "^2.0.5",
+    "ga-lite": "^2.1.0",
     "p-any": "^3.0.0",
-    "preact": "^10.4.6"
+    "preact": "^10.4.7"
   },
   "devDependencies": {
     "eslint-config-xo-preact": "^1.0.0",
-    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-simple-import-sort": "^5.0.3",
     "ts-loader": "^8.0.2",
     "typescript": "^3.9.7",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "xo": "^0.32.1"
+    "xo": "^0.33.0"
   }
 }
