@@ -15,10 +15,12 @@ async function fetchDataset(routerName: Name, suffix: ComponentLike[]): Promise<
     versionConvention: Version,
     verifier,
   });
-  return fetch.promise(versioned, {
+
+  const dataset = await fetch(versioned, {
     segmentNumConvention: Segment,
     verifier,
   });
+  return dataset;
 }
 
 function decodeDataset<R>(dataset: Uint8Array, d: Decodable<R>): R[] {
@@ -33,7 +35,7 @@ function decodeDataset<R>(dataset: Uint8Array, d: Decodable<R>): R[] {
 const routerNames: Name[] = [
   new Name("/ndn/edu/arizona/%C1.Router/hobo"),
   new Name("/ndn/edu/wustl/%C1.Router/wundngw"),
-  new Name("/ndn/it/unipd/%C1.Router/ndnnode"),
+  new Name("/ndn/fr/lip6/%C1.Router/ndnhub"),
   new Name("/ndn/kr/anyang/%C1.Router/anyanghub"),
 ];
 
