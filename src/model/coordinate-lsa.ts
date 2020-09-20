@@ -1,9 +1,9 @@
-import { Decoder, EvDecoder } from "@ndn/tlv";
+import { Decoder, Encoder, EvDecoder } from "@ndn/tlv";
 
 import { Lsa } from "./lsa";
 
 function decodeDouble(value: Uint8Array) {
-  return new DataView(value.buffer, value.byteOffset, value.byteLength).getFloat64(0, false);
+  return Encoder.asDataView(value).getFloat64(0, false);
 }
 
 const EVD = new EvDecoder<CoordinateLsa>("CoordinateLsa", 0x85)
