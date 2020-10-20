@@ -2,7 +2,7 @@ import Bugsnag from "@bugsnag/browser";
 import BugsnagPluginReact from "@bugsnag/plugin-react";
 import galite from "ga-lite";
 import * as Preact from "preact";
-import { Fragment, h, render } from "preact";
+const { Fragment, h, render } = Preact;
 
 import { App } from "./components/app";
 import { connect } from "./connect";
@@ -20,8 +20,8 @@ async function main() {
   let connectedRouter: string;
   try {
     connectedRouter = await connect();
-  } catch (err) {
-    Bugsnag.notify(err);
+  } catch (err: unknown) {
+    Bugsnag.notify(err as Error);
     return;
   }
   const ErrorBoundary = Bugsnag.getPlugin("react")?.createErrorBoundary() ?? Fragment;

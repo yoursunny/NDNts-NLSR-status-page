@@ -30,10 +30,10 @@ export class App extends Component<Props, State> {
 
   public render() {
     return (
-      <Fragment>
+      <>
         <RouterList list={this.state.lsas}/>
         <p>Connected to <code>{this.props.connectedRouter}</code>.</p>
-      </Fragment>
+      </>
     );
   }
 

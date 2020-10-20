@@ -7,6 +7,7 @@
     "importHelpers": true,
     "jsx": "react",
     "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
     "module": "es6",
     "moduleResolution": "node",
     "noImplicitAny": false,
