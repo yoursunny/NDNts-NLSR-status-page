@@ -52,8 +52,6 @@ async function makeVerifier(): Promise<Verifier> {
 let verifierPromise: Promise<Verifier>|undefined;
 
 export function getVerifier(): Promise<Verifier> {
-  if (!verifierPromise) {
-    verifierPromise = makeVerifier();
-  }
+  verifierPromise ??= makeVerifier();
   return verifierPromise;
 }

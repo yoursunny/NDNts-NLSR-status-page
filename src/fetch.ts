@@ -4,8 +4,7 @@ import { discoverVersion, fetch } from "@ndn/segmented-object";
 import { Decodable, Decoder, toHex } from "@ndn/tlv";
 import pAny from "p-any";
 
-import { CoordinateLsa, Lsa, NameLsa } from "./model";
-import { getVerifier } from "./model/trust";
+import { CoordinateLsa, getVerifier, Lsa, NameLsa } from "./model/mod";
 
 async function fetchDataset(routerName: Name, suffix: ComponentLike[]): Promise<Uint8Array> {
   const verifier = await getVerifier();

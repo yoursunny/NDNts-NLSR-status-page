@@ -1,8 +1,5 @@
 import { connectToTestbed } from "@ndn/autoconfig";
-import { FwTracer } from "@ndn/fw";
 import { Name } from "@ndn/packet";
-
-FwTracer.enable();
 
 export async function connect(): Promise<string> {
   const faces = await connectToTestbed({

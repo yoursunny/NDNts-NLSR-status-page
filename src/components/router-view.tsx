@@ -2,7 +2,7 @@ import { AltUri, Name } from "@ndn/packet";
 import { toHex } from "@ndn/tlv";
 import { Component, h } from "preact";
 
-import { CoordinateLsa, NameLsa } from "../model";
+import { CoordinateLsa, NameLsa } from "../model/mod";
 import { LsaInfoDetail } from "./lsa-info-detail";
 
 interface Props {
