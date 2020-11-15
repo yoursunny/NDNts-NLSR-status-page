@@ -27,5 +27,8 @@ module.exports = (env, argv) => ({
     contentBase: path.join(__dirname, "public"),
     disableHostCheck: true,
     port: 3333,
+    headers: {
+      "Origin-Trial": "Ap35eCHDwwsbFvzCecmVsWjl1eFe//k0PaTSQKrzKNZ/GRkQXr3208qHPKthQn570YfwJCW0TDPeo09BRF/7mwMAAABQeyJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjMzMzMiLCJmZWF0dXJlIjoiUXVpY1RyYW5zcG9ydCIsImV4cGlyeSI6MTYwOTA5MzMyN30=", // Chromium QuicTransport origin trial token for http://localhost:3333
+    },
   },
 });
