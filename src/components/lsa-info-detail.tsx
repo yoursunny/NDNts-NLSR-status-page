@@ -2,7 +2,7 @@ import { Component, h } from "preact";
 
 interface Props {
   sequenceNumber: bigint;
-  expirationPeriod: bigint;
+  expirationTime: string;
 }
 
 export class LsaInfoDetail extends Component<Props> {
@@ -11,7 +11,7 @@ export class LsaInfoDetail extends Component<Props> {
       <small>
         seqNum={this.props.sequenceNumber.toString()}
         &nbsp;
-        expire={this.props.expirationPeriod.toString()}
+        expire={this.props.expirationTime}
       </small>
     );
   }

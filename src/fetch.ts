@@ -6,17 +6,19 @@ import pAny from "p-any";
 
 import { CoordinateLsa, getVerifier, Lsa, NameLsa } from "./model/mod";
 
-async function fetchDataset(routerName: Name, suffix: ComponentLike[]): Promise<Uint8Array> {
+async function fetchDataset(routerName: Name, suffix: ComponentLike[], signal: AbortSignal): Promise<Uint8Array> {
   const verifier = await getVerifier();
   const name = routerName.append(...suffix);
   const versioned = await discoverVersion(name, {
     segmentNumConvention: Segment,
     versionConvention: Version,
+    signal,
     verifier,
   });
 
   const dataset = await fetch(versioned, {
     segmentNumConvention: Segment,
+    signal,
     verifier,
   });
   return dataset;
@@ -38,16 +40,6 @@ const routerNames: Name[] = [
   new Name("/ndn/kr/anyang/%C1.Router/anyanghub"),
 ];
 
-async function fetchCoordinateLsas(): Promise<CoordinateLsa[]> {
-  const dataset = await pAny(routerNames.map((router) => fetchDataset(router, CoordinateLsa.SUFFIX)));
-  return decodeDataset(dataset, CoordinateLsa);
-}
-
-async function fetchNameLsas(): Promise<NameLsa[]> {
-  const dataset = await pAny(routerNames.map((router) => fetchDataset(router, NameLsa.SUFFIX)));
-  return decodeDataset(dataset, NameLsa);
-}
-
 export interface RouterLsa {
   originRouter: string;
   name: Name;
@@ -56,10 +48,15 @@ export interface RouterLsa {
 }
 
 export async function fetchLsas(): Promise<RouterLsa[]> {
-  const [coordinateLsaList, nameLsaList] = await Promise.all([
-    fetchCoordinateLsas(),
-    fetchNameLsas(),
-  ]);
+  const abort = new AbortController();
+  const [coordinateLsaList, nameLsaList] = await pAny(routerNames.map((router) => Promise.all([
+    fetchDataset(router, CoordinateLsa.SUFFIX, abort.signal)
+      .then((dataset) => decodeDataset(dataset, CoordinateLsa)),
+    fetchDataset(router, NameLsa.SUFFIX, abort.signal)
+      .then((dataset) => decodeDataset(dataset, NameLsa)),
+  ])));
+  abort.abort();
+
   const coordinateLsaMap = lsaListToMap(coordinateLsaList);
   const nameLsaMap = lsaListToMap(nameLsaList);
   const originRouters = Array.from(new Set([...coordinateLsaMap.keys(), ...nameLsaMap.keys()]));

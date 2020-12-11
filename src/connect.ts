@@ -2,26 +2,36 @@ import { connectToTestbed } from "@ndn/autoconfig";
 import { Endpoint } from "@ndn/endpoint";
 import { Name } from "@ndn/packet";
 import { QuicTransport } from "@ndn/quic-transport";
+import pAny from "p-any";
 
 export async function connect(): Promise<string> {
+  const abort = new AbortController();
   try {
     const face = await QuicTransport.createFace({}, "quic-transport://quic-gateway-us-ny.ndn.today:6367/ndn");
     face.addRoute(new Name("/"));
-    await new Endpoint().consume(`/ndn/edu/arizona/ping/${Math.floor(Math.random() * 1e8)}`);
+
+    const endpoint = new Endpoint({ signal: abort.signal });
+    const suffix = Math.floor(Math.random() * 1e8);
+    await pAny([
+      endpoint.consume(`/ndn/edu/arizona/ping/${suffix}`),
+      endpoint.consume(`/ndn/kr/anyang/ping/${suffix}`),
+    ]);
+
     return face.toString();
   } catch (err: unknown) {
     console.warn("QUIC connection error", err);
+  } finally {
+    abort.abort();
   }
 
   const faces = await connectToTestbed({
     connectTimeout: 5000,
     count: 4,
-    fchFallback: ["hobo.cs.arizona.edu", "titan.cs.memphis.edu"],
+    fchFallback: ["hobo.cs.arizona.edu", "anyang.testbed.named-data.net"],
     preferFastest: true,
   });
   if (faces.length === 0) {
     throw new Error("unable to connect to NDN testbed");
   }
-  // faces[0].addRoute(new Name("/"));
   return faces[0].toString();
 }
