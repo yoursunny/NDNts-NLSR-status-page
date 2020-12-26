@@ -7,7 +7,7 @@ import pAny from "p-any";
 export async function connect(): Promise<string> {
   const abort = new AbortController();
   try {
-    const face = await QuicTransport.createFace({}, "quic-transport://quic-gateway-us-ny.ndn.today:6367/ndn");
+    const face = await QuicTransport.createFace({}, "quic-transport://quic-gateway-yul.ndn.today:15937/ndn");
     face.addRoute(new Name("/"));
 
     const endpoint = new Endpoint({ signal: abort.signal });
