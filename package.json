@@ -7,8 +7,8 @@
     "serve": "webpack serve --mode=development"
   },
   "dependencies": {
-    "@bugsnag/browser": "^7.5.4",
-    "@bugsnag/plugin-react": "^7.5.4",
+    "@bugsnag/browser": "^7.6.0",
+    "@bugsnag/plugin-react": "^7.6.0",
     "@ndn/autoconfig": "https://ndnts-nightly.ndn.today/autoconfig.tgz",
     "@ndn/endpoint": "https://ndnts-nightly.ndn.today/endpoint.tgz",
     "@ndn/fw": "https://ndnts-nightly.ndn.today/fw.tgz",
@@ -22,14 +22,14 @@
     "@ndn/ws-transport": "https://ndnts-nightly.ndn.today/ws-transport.tgz",
     "ga-lite": "^2.1.0",
     "p-any": "^3.0.0",
-    "preact": "^10.5.7"
+    "preact": "^10.5.11"
   },
   "devDependencies": {
-    "@yoursunny/xo-config": "^0.36.1",
-    "ts-loader": "^8.0.12",
+    "@yoursunny/xo-config": "^0.37.0",
+    "ts-loader": "^8.0.14",
     "typescript": "^4.1.3",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^4.3.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack": "^5.16.0",
+    "webpack-cli": "^4.4.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }

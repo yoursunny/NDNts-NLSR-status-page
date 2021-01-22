@@ -4,7 +4,7 @@ const path = require("path");
 /** @return {import("webpack").Configuration} */
 module.exports = (env, argv) => ({
   mode: argv.mode ?? "production",
-  devtool: argv.mode === "development" ? "eval-cheap-module-source-map" : "source-map",
+  devtool: argv.mode === "development" ? "cheap-module-source-map" : "source-map",
   entry: "./src/main.tsx",
   module: {
     rules: [
@@ -24,7 +24,7 @@ module.exports = (env, argv) => ({
   },
   node: false,
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    contentBase: path.resolve(__dirname, "public"),
     disableHostCheck: true,
     port: 3333,
     headers: {
