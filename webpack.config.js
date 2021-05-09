@@ -28,7 +28,7 @@ module.exports = (env, argv) => ({
     disableHostCheck: true,
     port: 3333,
     headers: {
-      "Origin-Trial": "AkBSxDbplNDpjSJqthxgSgn9I99vuHZTCzxKEz2TqfVYH1l7A6xsJUQfwEZekfhoMDpcCz8FFXhfWwnrGzqZ7AAAAABQeyJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjMzMzMiLCJmZWF0dXJlIjoiUXVpY1RyYW5zcG9ydCIsImV4cGlyeSI6MTYxMjA2NTUwMX0=", // Chromium QuicTransport origin trial token for http://localhost:3333
+      "Origin-Trial": "Ap99qRV6p2wigaFtSrZsnpG2lIyW+s25pMHp5RgsiIrZCPvQ3+PJCvvCEbWYELy3oW9iHyLZoRPbg3T4scUkJQ8AAABPeyJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjMzMzMiLCJmZWF0dXJlIjoiV2ViVHJhbnNwb3J0IiwiZXhwaXJ5IjoxNjM0MDgzMTk5fQ==", // Chromium WebTransport origin trial token for http://localhost:3333
     },
   },
 });

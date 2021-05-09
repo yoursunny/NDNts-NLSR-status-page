@@ -35,9 +35,8 @@ function decodeDataset<R>(dataset: Uint8Array, d: Decodable<R>): R[] {
 
 const routerNames: Name[] = [
   new Name("/ndn/edu/arizona/%C1.Router/hobo"),
-  new Name("/ndn/edu/wustl/%C1.Router/wundngw"),
-  new Name("/ndn/fr/lip6/%C1.Router/ndnhub"),
-  new Name("/ndn/kr/anyang/%C1.Router/anyanghub"),
+  new Name("/ndn/nl/delft/%C1.Router/ndn-testbed"),
+  new Name("/ndn/my/edu/uum/%C1.Router/isan-ndn"),
 ];
 
 export interface RouterLsa {
