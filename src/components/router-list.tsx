@@ -1,6 +1,6 @@
 import { Component, h } from "preact";
 
-import { RouterLsa } from "../fetch";
+import type { RouterLsa } from "../fetch";
 import { RouterView } from "./router-view";
 
 interface Props {
@@ -39,7 +39,7 @@ export class RouterList extends Component<Props> {
     return this.props.list.map(this.renderRouter);
   }
 
-  private renderRouter({ originRouter, nameLsa, coordinateLsa }: RouterLsa) {
-    return <RouterView key={originRouter} nameLsa={nameLsa} coordinateLsa={coordinateLsa}/>;
+  private renderRouter(router: RouterLsa) {
+    return <RouterView key={router.originRouter} router={router}/>;
   }
 }

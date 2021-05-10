@@ -1,67 +1,64 @@
 import { AltUri, Name } from "@ndn/packet";
 import { toHex } from "@ndn/tlv";
-import { Component, h } from "preact";
+import { Component, Fragment, h } from "preact";
 
-import { CoordinateLsa, NameLsa } from "../model/mod";
+import type { RouterLsa } from "../fetch";
 import { LsaInfoDetail } from "./lsa-info-detail";
 
 interface Props {
-  coordinateLsa?: CoordinateLsa;
-  nameLsa?: NameLsa;
+  router: RouterLsa;
 }
 
 export class RouterView extends Component<Props> {
   public render() {
-    const { nameLsa, coordinateLsa } = this.props;
+    const { nameLsa, coordinateLsa } = this.props.router;
     if (nameLsa && nameLsa.names.length > 0) {
       return nameLsa.names.map(this.renderRow);
     }
     return (
       <tr key={toHex(coordinateLsa!.originRouter.value)}>
         {this.renderOrigin()}
-        <td>&nbsp;</td>
+        <td/>
         {this.renderCoordinate()}
       </tr>
     );
   }
 
-  private computeRowSpan() {
-    const { nameLsa } = this.props;
-    return nameLsa ? Math.max(nameLsa.names.length, 1) : 1;
+  private get rowSpan() {
+    const { nameLsa } = this.props.router;
+    return nameLsa ? Math.max(1, nameLsa.names.length) : 1;
   }
 
   private renderOrigin() {
-    const { nameLsa, coordinateLsa } = this.props;
-    if (nameLsa) {
-      return (
-        <td rowSpan={this.computeRowSpan()}>
-          {AltUri.ofName(nameLsa.originRouter)}
-          <br/>
-          <LsaInfoDetail {...nameLsa}/>
-        </td>
-      );
-    }
+    const { name, nameLsa } = this.props.router;
     return (
-      <td>
-        {AltUri.ofName(coordinateLsa!.originRouter)}
+      <td rowSpan={this.rowSpan}>
+        {AltUri.ofName(name)}
+        {nameLsa ?
+          <>
+            <br/>
+            <LsaInfoDetail {...nameLsa}/>
+          </> :
+          undefined
+        }
       </td>
     );
   }
 
   private renderCoordinate() {
-    const { coordinateLsa } = this.props;
-    if (coordinateLsa) {
-      return (
-        <td rowSpan={this.computeRowSpan()}>
-          {coordinateLsa.radius.toFixed(5)}
-          {coordinateLsa.angle.map((a) => `, ${a.toFixed(5)}`)}
-          <br/>
-          <LsaInfoDetail {...coordinateLsa}/>
-        </td>
-      );
-    }
+    const { coordinateLsa } = this.props.router;
     return (
-      <td>&nbsp;</td>
+      <td rowSpan={this.rowSpan}>
+        {coordinateLsa ?
+          <>
+            {coordinateLsa.radius.toFixed(5)}
+            {coordinateLsa.angle.map((a) => `, ${a.toFixed(5)}`)}
+            <br/>
+            <LsaInfoDetail {...coordinateLsa}/>
+          </> :
+          undefined
+        }
+      </td>
     );
   }
 

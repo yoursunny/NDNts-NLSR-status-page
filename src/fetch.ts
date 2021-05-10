@@ -8,6 +8,7 @@ import { CoordinateLsa, getVerifier, Lsa, NameLsa } from "./model/mod";
 
 async function fetchDataset(routerName: Name, suffix: ComponentLike[], signal: AbortSignal): Promise<Uint8Array> {
   const verifier = await getVerifier();
+  void verifier;
   const name = routerName.append(...suffix);
   const versioned = await discoverVersion(name, {
     segmentNumConvention: Segment,

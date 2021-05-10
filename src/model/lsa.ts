@@ -12,6 +12,6 @@ export abstract class Lsa {
   }
 
   public originRouter = new Name();
-  public sequenceNumber!: bigint;
+  public sequenceNumber = BigInt(0);
   public expirationTime = "";
 }

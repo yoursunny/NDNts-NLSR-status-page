@@ -14,6 +14,11 @@ if (location.hostname.endsWith(".ndn.today")) {
     apiKey: "ea4b8d8f54ab51480dd721055e3cc0a9",
     plugins: [new BugsnagPluginReact(Preact)],
   });
+} else {
+  Bugsnag.start({
+    apiKey: "00000000000000000000000000000000",
+    enabledReleaseStages: [],
+  });
 }
 
 async function main() {
