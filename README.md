@@ -16,7 +16,7 @@ This project demonstrates these NDNts capabilities:
   It can retrieve segmented object, such as the LSDB dataset.
 * `TrustSchemaVerifier`.
   It can verify received packets according to a trust schema.
-* Experimental QUIC transport in Chrome browser.
+* Experimental HTTP/3 transport in Chrome browser.
 * `connectToTestbed` function from `@ndn/autoconfig`.
   It automatically finds an available testbed router via NDN-FCH service, and avoids single point of failure.
 

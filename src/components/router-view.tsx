@@ -2,31 +2,34 @@ import { AltUri, Name } from "@ndn/packet";
 import { toHex } from "@ndn/tlv";
 import { Component, Fragment, h } from "preact";
 
-import type { RouterLsa } from "../fetch";
+import { RouterLsaData, shortenName } from "../model/mod";
 import { LsaInfoDetail } from "./lsa-info-detail";
 
 interface Props {
-  router: RouterLsa;
+  router: RouterLsaData;
+  hideCoordinate: boolean;
+  hideAdjacency: boolean;
 }
 
 export class RouterView extends Component<Props> {
   public render() {
-    const { nameLsa, coordinateLsa } = this.props.router;
-    if (nameLsa && nameLsa.names.length > 0) {
+    const { originRouter, nameLsa } = this.props.router;
+    if (nameLsa.names.length > 0) {
       return nameLsa.names.map(this.renderRow);
     }
     return (
-      <tr key={toHex(coordinateLsa!.originRouter.value)}>
+      <tr key={originRouter}>
         {this.renderOrigin()}
         <td/>
         {this.renderCoordinate()}
+        {this.renderAdjacency()}
       </tr>
     );
   }
 
   private get rowSpan() {
     const { nameLsa } = this.props.router;
-    return nameLsa ? Math.max(1, nameLsa.names.length) : 1;
+    return Math.max(1, nameLsa.names.length);
   }
 
   private renderOrigin() {
@@ -46,18 +49,49 @@ export class RouterView extends Component<Props> {
   }
 
   private renderCoordinate() {
-    const { coordinateLsa } = this.props.router;
+    const {
+      router: { coordinateLsa },
+      hideCoordinate,
+    } = this.props;
+    if (hideCoordinate) {
+      return undefined;
+    }
+    if (!coordinateLsa) {
+      return <td rowSpan={this.rowSpan}/>;
+    }
     return (
       <td rowSpan={this.rowSpan}>
-        {coordinateLsa ?
-          <>
-            {coordinateLsa.radius.toFixed(5)}
-            {coordinateLsa.angle.map((a) => `, ${a.toFixed(5)}`)}
-            <br/>
-            <LsaInfoDetail {...coordinateLsa}/>
-          </> :
-          undefined
-        }
+        {coordinateLsa.radius.toFixed(5)}
+        {coordinateLsa.angle.map((a) => `, ${a.toFixed(5)}`)}
+        <br/>
+        <LsaInfoDetail {...coordinateLsa}/>
+      </td>
+    );
+  }
+
+  private renderAdjacency() {
+    const {
+      router: { adjacencyLsa },
+      hideAdjacency,
+    } = this.props;
+    if (hideAdjacency) {
+      return undefined;
+    }
+    if (!adjacencyLsa) {
+      return <td rowSpan={this.rowSpan}/>;
+    }
+    return (
+      <td rowSpan={this.rowSpan}>
+        <ul>
+          {adjacencyLsa.adjacencies.map((adj) => (
+            <li key={toHex(adj.name.value)} title={AltUri.ofName(adj.name)}>
+              {shortenName(adj.name).map(AltUri.ofComponent).join("/")}
+              {" "}
+              <small>({adj.cost})</small>
+            </li>
+          ))}
+        </ul>
+        <LsaInfoDetail {...adjacencyLsa}/>
       </td>
     );
   }
@@ -67,7 +101,7 @@ export class RouterView extends Component<Props> {
       <tr key={toHex(name.value)}>
         {index === 0 ? this.renderOrigin() : undefined}
         <td>{AltUri.ofName(name)}</td>
-        {index === 0 ? this.renderCoordinate() : undefined}
+        {index === 0 ? [this.renderCoordinate(), this.renderAdjacency()] : undefined}
       </tr>
     );
   };

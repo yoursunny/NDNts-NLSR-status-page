@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<title>NLSR Status on NDN Testbed</title>
+<title>NLSR Status on NDN Network</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="origin-trial" content="AqQ5izBxKvhlnlWKAHwczDH9Lw3Yx51qBpe5WdD8nzi7BoACbrhW4E21S+26oADUpZuE1mqLyA3ckgA0DwqJjwMAAABieyJvcmlnaW4iOiJodHRwczovL25kbi50b2RheTo0NDMiLCJmZWF0dXJlIjoiV2ViVHJhbnNwb3J0IiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0="><!-- Chromium WebTransport origin trial token for https://*.ndn.today -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/purecss@2.0.6,npm/purecss@2.0.6/build/grids-responsive-min.min.css">
@@ -8,18 +8,19 @@
 body { padding: 1em; }
 </style>
 
-<div class="pure-g">
-  <main class="pure-u-1 pure-u-xl-3-4">
-    <h1>NLSR Status on NDN Testbed</h1>
-    <div id="app"></div>
-  </main>
-  <aside class="pure-u-1 pure-u-xl-1-4">
-    <h2>About this page</h2>
+<main>
+  <h1>NLSR Status on NDN Network</h1>
+  <div id="app"></div>
+</main>
+<aside class="pure-g">
+  <div class="pure-u-1-4">
     <img src="logo.svg" alt="NDNts">
+  </div>
+  <div class="pure-u-3-4">
     <p>This page is built with <a href="https://yoursunny.com/p/NDNts/">NDNts</a>, Named Data Networking libraries for the modern web.</p>
-    <p>Every 10 seconds, it requests <a href="https://redmine.named-data.net/projects/nlsr/wiki/LSDB_DataSet">LSDB dataset</a> from the NLSR instance on a testbed router, verifies the packets against a trust schema, and then renders NameLsa and CoordinateLsa objects on a Preact web application.</p>
+    <p>Every 10 seconds, it requests <a href="https://redmine.named-data.net/projects/nlsr/wiki/LSDB_DataSet">LSDB dataset</a> from NLSR, verifies the packets against a trust schema, and then renders LSA objects on a Preact web application.</p>
     <p>View <a href="https://github.com/yoursunny/NDNts-NLSR-status-page">source code on GitHub</a>.</p>
-  </aside>
-</div>
+  </div>
+</aside>
 
 <script src="bundle.js"></script>

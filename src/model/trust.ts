@@ -18,8 +18,22 @@ c6a679f8feaa05f62275c94644ffb35af33ccee314fa46920cd116701b01
 2053c0b1766141760e6596ba1e40712d9cf6b6a8770ea88b919a18e250d8
 09c5a9`;
 
+// ndnsec_in keychain/root cert-dump -i /yoursunny | base64 -d | xxd -p
+const YOURSUNNY_ROOT_1618190329576_HEX = `
+06fd0129072a0809796f757273756e6e7908034b455908087319cd8d937b
+5ba6080473656c66230800000178c3a8e6e8140918010219040036ee8015
+5b3059301306072a8648ce3d020106082a8648ce3d030107034200046af1
+9567f65ec0dda977ec53f7e47e2a1dfb77983b4f1e7814a17a150f2ec751
+813573c25e6be4a1740e55a57195b001d2d72a4a8f5e42e9e395b1cf640b
+f051164b1b01031c1c071a0809796f757273756e6e7908034b4559080873
+19cd8d937b5ba6fd00fd26fd00fe0f313937303031303154303030303030
+fd00ff0f32303431303430375430313138343917463044022029f81a3b64
+6fedcb375656af4e90bceb26379f0eadf2ae428930c3a3677e759502205c
+5fad1f9906e1c34b4357d3c50c6c6414abfaca3b3804a54e05f48c51091d
+5d`;
+
 const POLICY = `
-network = ndn
+network = ndn | yoursunny
 sitename = <_s1> | (<_s1>/<_s2>) | (<_s1>/<_s2>/<_s3>)
 
 rootcert = <network>/<_KEY>
@@ -27,7 +41,7 @@ sitecert = <network>/<sitename>/<_KEY>
 operatorcert = <network>/<sitename>/%C1.Operator/<_opid>/<_KEY>
 routercert = <network>/<sitename>/%C1.Router/<_routerid>/<_KEY>
 
-lsdbdata = ndn/<sitename>/%C1.Router/<_routerid>/nlsr/lsdb/<_lsatype>/<_version>/<_segment>
+lsdbdata = <network>/<sitename>/%C1.Router/<_routerid>/nlsr/lsdb/<_lsatype>/<_version>/<_segment>
 
 lsdbdata <= routercert <= operatorcert <= sitecert <= rootcert
 `;
@@ -42,6 +56,7 @@ async function importRootCert(hex: string): Promise<Certificate> {
 async function makeVerifier(): Promise<Verifier> {
   const trustAnchors = await Promise.all([
     NDN_TESTBED_ROOT_X3_HEX,
+    YOURSUNNY_ROOT_1618190329576_HEX,
   ].map((hex) => importRootCert(hex)));
   const policy = versec2019.load(POLICY);
   const schema = new TrustSchema(policy, trustAnchors);
