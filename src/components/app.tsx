@@ -3,7 +3,7 @@ import { AltUri } from "@ndn/packet";
 import { get as hashGet, set as hashSet } from "hashquery";
 import { Component, Fragment, h } from "preact";
 
-import { fetchLsas, NetworkProfile } from "../fetch";
+import { fetchDataset, NetworkProfile } from "../fetch";
 import { RouterLsaData } from "../model/mod";
 import { RouterList } from "./router-list";
 
@@ -13,12 +13,13 @@ interface Props {
 
 interface State {
   network: keyof typeof NetworkProfile;
+  from: string;
   lsas: RouterLsaData[];
 }
 
 export class App extends Component<Props, State> {
   private refreshTimer = 0;
-  state = {
+  state: State = {
     network: (() => {
       const id = hashGet("network");
       if (Object.keys(NetworkProfile).includes(id)) {
@@ -27,6 +28,7 @@ export class App extends Component<Props, State> {
       hashSet("network", "ndn");
       return "ndn";
     })(),
+    from: "",
     lsas: [],
   };
 
@@ -54,7 +56,7 @@ export class App extends Component<Props, State> {
           </ul>
         </div>
         <RouterList list={this.state.lsas} show={this.network.show}/>
-        <p>Connected to <code>{this.props.connectedRouter}</code>.</p>
+        <p>Connected to <code>{this.props.connectedRouter}</code>; dataset retrieved from <code>{this.state.from}</code>.</p>
       </>
     );
   }
@@ -67,14 +69,17 @@ export class App extends Component<Props, State> {
     (evt: MouseEvent) => {
       evt.preventDefault();
       hashSet("network", id);
-      this.setState({ network: id, lsas: [] }, this.refresh);
+      this.setState({ network: id, from: "", lsas: [] }, this.refresh);
     };
 
   private refresh = () => {
-    fetchLsas(this.network)
+    fetchDataset(this.network)
       .then(
-        (lsas) => this.setState({ lsas }),
-        (err) => Bugsnag.notify(err),
+        ({ from, lsas }) => this.setState({ from: AltUri.ofName(from), lsas }),
+        (err) => {
+          console.error(err);
+          Bugsnag.notify(err);
+        },
       );
   };
 }

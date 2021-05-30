@@ -3,7 +3,7 @@ import { Segment as Segment2, Version as Version2 } from "@ndn/naming-convention
 import { Name, NamingConvention } from "@ndn/packet";
 import pAny from "p-any";
 
-import { AdjacencyLsa, CoordinateLsa, getVerifier, NameLsa, retrieveDataset, RouterLsaData } from "./model/mod";
+import { AdjacencyLsa, CoordinateLsa, getVerifier, NameLsa, retrieveDataset, RouterDataset } from "./model/mod";
 
 export interface NetworkProfile {
   network: Name;
@@ -37,12 +37,12 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
   },
 };
 
-export async function fetchLsas({
+export async function fetchDataset({
   routerNames,
   segmentNumConvention,
   versionConvention,
   show,
-}: NetworkProfile): Promise<RouterLsaData[]> {
+}: NetworkProfile): Promise<RouterDataset> {
   const abort = new AbortController();
   const options = {
     segmentNumConvention,
@@ -50,7 +50,8 @@ export async function fetchLsas({
     signal: abort.signal,
     verifier: await getVerifier(),
   };
-  const [nameLsas, coordinateLsas, adjacencyLsas] = await pAny(routerNames.map((routerName) => Promise.all([
+  const [from, nameLsas, coordinateLsas, adjacencyLsas] = await pAny(routerNames.map((routerName) => Promise.all([
+    routerName,
     retrieveDataset({ routerName, d: NameLsa, ...options }),
     show === "coordinates" ? retrieveDataset({ routerName, d: CoordinateLsa, ...options }) : undefined,
     show === "adjacencies" ? retrieveDataset({ routerName, d: AdjacencyLsa, ...options }) : undefined,
@@ -59,14 +60,17 @@ export async function fetchLsas({
 
   const originRouters = Array.from(nameLsas.keys());
   originRouters.sort((a, b) => a.localeCompare(b));
-  return originRouters.map((originRouter) => {
-    const nameLsa = nameLsas.get(originRouter)!;
-    return {
-      originRouter,
-      name: nameLsa.originRouter,
-      nameLsa,
-      coordinateLsa: coordinateLsas?.get(originRouter),
-      adjacencyLsa: adjacencyLsas?.get(originRouter),
-    };
-  });
+  return {
+    from,
+    lsas: originRouters.map((originRouter) => {
+      const nameLsa = nameLsas.get(originRouter)!;
+      return {
+        originRouter,
+        name: nameLsa.originRouter,
+        nameLsa,
+        coordinateLsa: coordinateLsas?.get(originRouter),
+        adjacencyLsa: adjacencyLsas?.get(originRouter),
+      };
+    }),
+  };
 }

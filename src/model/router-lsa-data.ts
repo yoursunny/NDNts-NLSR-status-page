@@ -7,6 +7,11 @@ import type { CoordinateLsa } from "./coordinate-lsa";
 import type { Lsa } from "./lsa";
 import type { NameLsa } from "./name-lsa";
 
+export interface RouterDataset {
+  from: Name;
+  lsas: RouterLsaData[];
+}
+
 export interface RouterLsaData {
   originRouter: string;
   name: Name;

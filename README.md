@@ -17,8 +17,8 @@ This project demonstrates these NDNts capabilities:
 * `TrustSchemaVerifier`.
   It can verify received packets according to a trust schema.
 * Experimental HTTP/3 transport in Chrome browser.
-* `connectToTestbed` function from `@ndn/autoconfig`.
-  It automatically finds an available testbed router via NDN-FCH service, and avoids single point of failure.
+* `connectToNetwork` function from `@ndn/autoconfig`.
+  It automatically finds available routers via [NDN-FCH service](https://github.com/11th-ndn-hackathon/ndn-fch), and avoids single point of failure.
 
 Build instructions:
 
