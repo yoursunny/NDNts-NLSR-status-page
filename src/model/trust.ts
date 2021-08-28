@@ -63,7 +63,7 @@ async function makeVerifier(): Promise<Verifier> {
   return new TrustSchemaVerifier({ schema });
 }
 
-let verifierPromise: Promise<Verifier>|undefined;
+let verifierPromise: Promise<Verifier> | undefined;
 
 export function getVerifier(): Promise<Verifier> {
   verifierPromise ??= makeVerifier();

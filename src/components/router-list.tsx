@@ -5,7 +5,7 @@ import { RouterView } from "./router-view";
 
 interface Props {
   list: RouterLsaData[];
-  show: "coordinates"|"adjacencies";
+  show: "coordinates" | "adjacencies";
 }
 
 export class RouterList extends Component<Props> {

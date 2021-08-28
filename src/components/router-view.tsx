@@ -96,13 +96,11 @@ export class RouterView extends Component<Props> {
     );
   }
 
-  private renderRow = (name: Name, index: number) => {
-    return (
-      <tr key={toHex(name.value)}>
-        {index === 0 ? this.renderOrigin() : undefined}
-        <td>{AltUri.ofName(name)}</td>
-        {index === 0 ? [this.renderCoordinate(), this.renderAdjacency()] : undefined}
-      </tr>
-    );
-  };
+  private renderRow = (name: Name, index: number) => (
+    <tr key={toHex(name.value)}>
+      {index === 0 ? this.renderOrigin() : undefined}
+      <td>{AltUri.ofName(name)}</td>
+      {index === 0 ? [this.renderCoordinate(), this.renderAdjacency()] : undefined}
+    </tr>
+  );
 }

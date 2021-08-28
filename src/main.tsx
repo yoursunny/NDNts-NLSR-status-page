@@ -2,6 +2,7 @@ import Bugsnag from "@bugsnag/browser";
 import BugsnagPluginReact from "@bugsnag/plugin-react";
 import galite from "ga-lite";
 import * as Preact from "preact";
+
 const { Fragment, h, render } = Preact;
 
 import { App } from "./components/app";

@@ -10,7 +10,7 @@ export interface NetworkProfile {
   routerNames: readonly Name[];
   segmentNumConvention: NamingConvention<number>;
   versionConvention: NamingConvention<number>;
-  show: "coordinates"|"adjacencies";
+  show: "coordinates" | "adjacencies";
 }
 
 export const NetworkProfile: Record<string, NetworkProfile> = {
