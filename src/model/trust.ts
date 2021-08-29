@@ -1,7 +1,7 @@
 import { Certificate } from "@ndn/keychain";
 import { Data, Verifier } from "@ndn/packet";
 import { Decoder, fromHex } from "@ndn/tlv";
-import { TrustSchema, TrustSchemaVerifier, versec2019 } from "@ndn/trust-schema";
+import { TrustSchema, TrustSchemaVerifier, versec2021 } from "@ndn/trust-schema";
 
 // curl -sfL https://named-data.net/ndnsec/ndn-testbed-root-x3.ndncert | xxd -p
 const NDN_TESTBED_ROOT_X3_HEX = `
@@ -33,17 +33,18 @@ fd00ff0f32303431303430375430313138343917463044022029f81a3b64
 5d`;
 
 const POLICY = `
-network = ndn | yoursunny
-sitename = <_s1> | (<_s1>/<_s2>) | (<_s1>/<_s2>/<_s3>)
+_network: "ndn" | "yoursunny"
+_sitename: s1 | (s1/s2) | (s1/s2/s3)
+_routername: _network/_sitename/"%C1.Router"/routerid
 
-rootcert = <network>/<_KEY>
-sitecert = <network>/<sitename>/<_KEY>
-operatorcert = <network>/<sitename>/%C1.Operator/<_opid>/<_KEY>
-routercert = <network>/<sitename>/%C1.Router/<_routerid>/<_KEY>
-
-lsdbdata = <network>/<sitename>/%C1.Router/<_routerid>/nlsr/lsdb/<_lsatype>/<_version>/<_segment>
+rootcert: _network/_CERT
+sitecert: _network/_sitename/_CERT
+operatorcert: _network/_sitename/"%C1.Operator"/opid/_CERT
+routercert: _routername/_CERT
+lsdbdata: _routername/"nlsr"/"lsdb"/lsatype/version/segment
 
 lsdbdata <= routercert <= operatorcert <= sitecert <= rootcert
+_CERT: "KEY"/_/_/_
 `;
 
 async function importRootCert(hex: string): Promise<Certificate> {
@@ -58,7 +59,7 @@ async function makeVerifier(): Promise<Verifier> {
     NDN_TESTBED_ROOT_X3_HEX,
     YOURSUNNY_ROOT_1618190329576_HEX,
   ].map((hex) => importRootCert(hex)));
-  const policy = versec2019.load(POLICY);
+  const policy = versec2021.load(POLICY);
   const schema = new TrustSchema(policy, trustAnchors);
   return new TrustSchemaVerifier({ schema });
 }

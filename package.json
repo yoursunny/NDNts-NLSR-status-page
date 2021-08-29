@@ -20,6 +20,7 @@
     "@ndn/tlv": "https://ndnts-nightly.ndn.today/tlv.tgz",
     "@ndn/trust-schema": "https://ndnts-nightly.ndn.today/trust-schema.tgz",
     "@ndn/ws-transport": "https://ndnts-nightly.ndn.today/ws-transport.tgz",
+    "@types/web": "0.0.27",
     "ga-lite": "^2.1.0",
     "hashquery": "^1.0.0",
     "p-any": "^4.0.0",
