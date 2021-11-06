@@ -32,6 +32,8 @@ export class App extends Component<Props, State> {
     lsas: [],
   };
 
+  abort = new AbortController();
+
   public componentDidMount() {
     this.refreshTimer = setInterval(this.refresh, 10000) as unknown as number;
     this.refresh();
@@ -73,13 +75,20 @@ export class App extends Component<Props, State> {
     };
 
   private refresh = () => {
-    fetchDataset(this.network)
+    this.abort.abort();
+    const abort = new AbortController();
+    this.abort = abort;
+    fetchDataset(this.network, abort.signal)
       .then(
         ({ from, lsas }) => this.setState({ from: AltUri.ofName(from), lsas }),
         (err) => {
+          if (abort.signal.aborted) {
+            return;
+          }
           console.error(err);
           Bugsnag.notify(err);
         },
-      );
+      )
+      .finally(() => abort.abort());
   };
 }

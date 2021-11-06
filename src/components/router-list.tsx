@@ -11,7 +11,7 @@ interface Props {
 export class RouterList extends Component<Props> {
   public render() {
     const { show } = this.props;
-    const [width1, colume2, width2] =
+    const [width1, column2, width2] =
       show === "coordinates" ?
         [50, "Coordinates", 20] :
         [40, "Adjacencies", 30];
@@ -21,7 +21,7 @@ export class RouterList extends Component<Props> {
           <tr>
             <th style="width:30%;">Router</th>
             <th style={`width:${width1}%;`}>Prefix</th>
-            <th style={`width:${width2}%;`}>{colume2}</th>
+            <th style={`width:${width2}%;`}>{column2}</th>
           </tr>
         </thead>
         <tbody>{this.renderBody()}</tbody>
@@ -30,14 +30,15 @@ export class RouterList extends Component<Props> {
   }
 
   private renderBody() {
-    if (this.props.list.length === 0) {
+    const { list } = this.props;
+    if (list.length === 0) {
       return (
         <tr>
           <td colSpan={3}>loading</td>
         </tr>
       );
     }
-    return this.props.list.map(this.renderRouter);
+    return list.map(this.renderRouter);
   }
 
   private renderRouter = (router: RouterLsaData) => {

@@ -1,5 +1,5 @@
 import { Segment as Segment1, Version as Version1 } from "@ndn/naming-convention1";
-import { Segment as Segment2, Version as Version2 } from "@ndn/naming-convention2";
+import { Segment2, Version2 } from "@ndn/naming-convention2";
 import { Name, NamingConvention } from "@ndn/packet";
 import pAny from "p-any";
 
@@ -29,7 +29,7 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
     network: new Name("/yoursunny"),
     routerNames: [
       new Name("/yoursunny/_/%C1.Router/dal"),
-      new Name("/yoursunny/_/%C1.Router/waw"),
+      new Name("/yoursunny/_/%C1.Router/muc"),
     ],
     segmentNumConvention: Segment2,
     versionConvention: Version2,
@@ -42,12 +42,11 @@ export async function fetchDataset({
   segmentNumConvention,
   versionConvention,
   show,
-}: NetworkProfile): Promise<RouterDataset> {
-  const abort = new AbortController();
+}: NetworkProfile, signal: AbortSignal): Promise<RouterDataset> {
   const options = {
     segmentNumConvention,
     versionConvention,
-    signal: abort.signal,
+    signal,
     verifier: await getVerifier(),
   };
   const [from, nameLsas, coordinateLsas, adjacencyLsas] = await pAny(routerNames.map((routerName) => Promise.all([
@@ -56,7 +55,6 @@ export async function fetchDataset({
     show === "coordinates" ? retrieveDataset({ routerName, d: CoordinateLsa, ...options }) : undefined,
     show === "adjacencies" ? retrieveDataset({ routerName, d: AdjacencyLsa, ...options }) : undefined,
   ])));
-  abort.abort();
 
   const originRouters = Array.from(nameLsas.keys());
   originRouters.sort((a, b) => a.localeCompare(b));
