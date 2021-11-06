@@ -23,7 +23,6 @@
     "@types/web": "0.0.46",
     "ga-lite": "^2.1.0",
     "hashquery": "^1.0.0",
-    "p-any": "^4.0.0",
     "preact": "^10.5.15"
   },
   "devDependencies": {

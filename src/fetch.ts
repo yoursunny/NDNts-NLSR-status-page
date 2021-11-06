@@ -1,7 +1,6 @@
 import { Segment as Segment1, Version as Version1 } from "@ndn/naming-convention1";
 import { Segment2, Version2 } from "@ndn/naming-convention2";
 import { Name, NamingConvention } from "@ndn/packet";
-import pAny from "p-any";
 
 import { AdjacencyLsa, CoordinateLsa, getVerifier, NameLsa, retrieveDataset, RouterDataset } from "./model/mod";
 
@@ -49,7 +48,9 @@ export async function fetchDataset({
     signal,
     verifier: await getVerifier(),
   };
-  const [from, nameLsas, coordinateLsas, adjacencyLsas] = await pAny(routerNames.map((routerName) => Promise.all([
+  // https://github.com/dustinspecker/obj-props/issues/4
+  // eslint-disable-next-line no-use-extend-native/no-use-extend-native
+  const [from, nameLsas, coordinateLsas, adjacencyLsas] = await Promise.any(routerNames.map((routerName) => Promise.all([
     routerName,
     retrieveDataset({ routerName, d: NameLsa, ...options }),
     show === "coordinates" ? retrieveDataset({ routerName, d: CoordinateLsa, ...options }) : undefined,
