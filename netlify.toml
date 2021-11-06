@@ -3,7 +3,8 @@
   set -eo pipefail
   rm -rf package-lock.json node_modules/\\@ndn
   npm install
-  npm run lint && git diff --exit-code
+  npm run build-trust-policy
   npm run build
+  npm run lint && git diff --exit-code
   """
   publish = "public/"

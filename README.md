@@ -6,7 +6,7 @@ Production site: [https://nlsr-status.ndn.today/](https://nlsr-status.ndn.today/
 
 NLSR status page built with [NDNts](https://yoursunny.com/p/NDNts/), inspired by [Alvy's NLSRC-status-page](https://github.com/alvyC/NLSR-status-page).
 
-![NDNts logo](public/logo.svg)
+![NDNts logo](https://cdn.jsdelivr.net/gh/yoursunny/NDNts@8bd2f28d7893a7ea3a7342a169af5a21bb4c7636/docs/logo.svg)
 
 This project demonstrates these NDNts capabilities:
 
@@ -23,5 +23,6 @@ This project demonstrates these NDNts capabilities:
 Build instructions:
 
 1. `npm install` to install dependencies.
-2. `npm run serve` to start development server.
-3. `npm run build` to compile production site in `public/`.
+2. `npm run build-trust-policy` to generate trust schema policy code.
+3. `npm run serve` to start development server.
+4. `npm run build` to compile production site in `public/`.

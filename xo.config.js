@@ -1,7 +1,7 @@
 /** @typedef {import("xo").Options} XoOptions */
 
 /** @type {import("@yoursunny/xo-config")} */
-const { js, ts, preact, merge } = require("@yoursunny/xo-config");
+const { js, ts, web, preact, merge } = require("@yoursunny/xo-config");
 
 /** @type {XoOptions} */
 module.exports = {
@@ -9,9 +9,21 @@ module.exports = {
   overrides: [
     {
       files: [
-        "./src/**/*.(ts|tsx)",
+        "./mk/*.ts",
       ],
-      ...merge(js, ts, preact),
+      ...merge(js, ts),
+    },
+    {
+      files: [
+        "./src/**/*.ts",
+      ],
+      ...merge(js, ts, web),
+    },
+    {
+      files: [
+        "./src/**/*.tsx",
+      ],
+      ...merge(js, ts, web, preact),
     },
   ],
 };
