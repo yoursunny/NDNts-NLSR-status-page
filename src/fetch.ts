@@ -2,7 +2,7 @@ import { Segment as Segment1, Version as Version1 } from "@ndn/naming-convention
 import { Segment2, Version2 } from "@ndn/naming-convention2";
 import { Name, NamingConvention } from "@ndn/packet";
 
-import { AdjacencyLsa, CoordinateLsa, getVerifier, NameLsa, retrieveDataset, RouterDataset } from "./model/mod";
+import { AdjacencyLsa, CoordinateLsa, NameLsa, retrieveDataset, RouterDataset, verifier } from "./model/mod";
 
 export interface NetworkProfile {
   network: Name;
@@ -46,7 +46,7 @@ export async function fetchDataset({
     segmentNumConvention,
     versionConvention,
     signal,
-    verifier: await getVerifier(),
+    verifier,
   };
   // https://github.com/dustinspecker/obj-props/issues/4
   // eslint-disable-next-line no-use-extend-native/no-use-extend-native

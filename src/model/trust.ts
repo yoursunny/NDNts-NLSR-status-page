@@ -34,25 +34,14 @@ fd00ff0f32303431303430375430313138343917463044022029f81a3b64
 5fad1f9906e1c34b4357d3c50c6c6414abfaca3b3804a54e05f48c51091d
 5d`;
 
-async function importRootCert(hex: string): Promise<Certificate> {
+function importRootCert(hex: string): Certificate {
   const data = new Decoder(fromHex(hex.replace(/\s+/g, ""))).decode(Data);
-  const cert = Certificate.fromData(data);
-  await cert.createVerifier();
-  return cert;
+  return Certificate.fromData(data);
 }
 
-async function makeVerifier(): Promise<Verifier> {
-  const trustAnchors = await Promise.all([
-    NDN_TESTBED_ROOT_X3_HEX,
-    YOURSUNNY_ROOT_1618190329576_HEX,
-  ].map((hex) => importRootCert(hex)));
-  const schema = new TrustSchema(policy, trustAnchors);
-  return new TrustSchemaVerifier({ schema });
-}
-
-let verifierPromise: Promise<Verifier> | undefined;
-
-export function getVerifier(): Promise<Verifier> {
-  verifierPromise ??= makeVerifier();
-  return verifierPromise;
-}
+const trustAnchors = [
+  NDN_TESTBED_ROOT_X3_HEX,
+  YOURSUNNY_ROOT_1618190329576_HEX,
+].map(importRootCert);
+const schema = new TrustSchema(policy, trustAnchors);
+export const verifier: Verifier = new TrustSchemaVerifier({ schema });
