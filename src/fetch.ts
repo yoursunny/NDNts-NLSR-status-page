@@ -1,5 +1,5 @@
 import { Segment as Segment1, Version as Version1 } from "@ndn/naming-convention1";
-import { Segment2, Version2 } from "@ndn/naming-convention2";
+import { Segment3, Version3 } from "@ndn/naming-convention2";
 import { Name, NamingConvention } from "@ndn/packet";
 
 import { AdjacencyLsa, CoordinateLsa, NameLsa, retrieveDataset, RouterDataset, verifier } from "./model/mod";
@@ -17,8 +17,8 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
     network: new Name("/ndn"),
     routerNames: [
       new Name("/ndn/edu/arizona/%C1.Router/hobo"),
-      new Name("/ndn/nl/delft/%C1.Router/ndn-testbed"),
-      new Name("/ndn/my/edu/uum/%C1.Router/isan-ndn"),
+      new Name("/ndn/uk/ac/qub/%C1.Router/ndn"),
+      new Name("/ndn/in/ac/iiith/%C1.Router/ndntestbed"),
     ],
     segmentNumConvention: Segment1,
     versionConvention: Version1,
@@ -29,9 +29,10 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
     routerNames: [
       new Name("/yoursunny/_/%C1.Router/dal"),
       new Name("/yoursunny/_/%C1.Router/muc"),
+      new Name("/yoursunny/_/%C1.Router/sin"),
     ],
-    segmentNumConvention: Segment2,
-    versionConvention: Version2,
+    segmentNumConvention: Segment3,
+    versionConvention: Version3,
     show: "adjacencies",
   },
 };
