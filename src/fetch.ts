@@ -1,14 +1,10 @@
-import { Segment as Segment1, Version as Version1 } from "@ndn/naming-convention1";
-import { Segment3, Version3 } from "@ndn/naming-convention2";
-import { Name, NamingConvention } from "@ndn/packet";
+import { Name } from "@ndn/packet";
 
 import { AdjacencyLsa, CoordinateLsa, NameLsa, retrieveDataset, RouterDataset, verifier } from "./model/mod";
 
 export interface NetworkProfile {
   network: Name;
   routerNames: readonly Name[];
-  segmentNumConvention: NamingConvention<number>;
-  versionConvention: NamingConvention<number>;
   show: "coordinates" | "adjacencies";
 }
 
@@ -20,8 +16,6 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
       new Name("/ndn/uk/ac/qub/%C1.Router/ndn"),
       new Name("/ndn/in/ac/iiith/%C1.Router/ndntestbed"),
     ],
-    segmentNumConvention: Segment1,
-    versionConvention: Version1,
     show: "coordinates",
   },
   yoursunny: {
@@ -31,21 +25,15 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
       new Name("/yoursunny/_/%C1.Router/muc"),
       new Name("/yoursunny/_/%C1.Router/sin"),
     ],
-    segmentNumConvention: Segment3,
-    versionConvention: Version3,
     show: "adjacencies",
   },
 };
 
 export async function fetchDataset({
   routerNames,
-  segmentNumConvention,
-  versionConvention,
   show,
 }: NetworkProfile, signal: AbortSignal): Promise<RouterDataset> {
   const options = {
-    segmentNumConvention,
-    versionConvention,
     signal,
     verifier,
   };
