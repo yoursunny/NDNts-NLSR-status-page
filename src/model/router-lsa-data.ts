@@ -1,4 +1,4 @@
-import type { ComponentLike, Name, Verifier } from "@ndn/packet";
+import type { ComponentLike, FwHint, Name, Verifier } from "@ndn/packet";
 import { discoverVersion, fetch } from "@ndn/segmented-object";
 import { Decodable, Decoder, toHex } from "@ndn/tlv";
 
@@ -24,16 +24,19 @@ export async function retrieveDataset<R extends Lsa>({
   routerName,
   d,
   signal,
+  fwHint,
   verifier,
 }: retrieveDataset.Options<R>): Promise<Map<string, R>> {
   const name = routerName.append(...d.SUFFIX);
   const versioned = await discoverVersion(name, {
     signal,
+    modifyInterest: fwHint ? { fwHint } : undefined,
     verifier,
   });
 
   const dataset = await fetch(versioned, {
     signal,
+    modifyInterest: fwHint ? { fwHint } : undefined,
     verifier,
   });
 
@@ -51,6 +54,7 @@ export namespace retrieveDataset {
     routerName: Name;
     d: Decodable<R> & { SUFFIX: readonly ComponentLike[] };
     signal: AbortSignal;
+    fwHint?: FwHint;
     verifier: Verifier;
   }
 }

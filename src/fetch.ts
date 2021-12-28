@@ -1,4 +1,4 @@
-import { Name } from "@ndn/packet";
+import { FwHint, Name, noopSigning } from "@ndn/packet";
 
 import { AdjacencyLsa, CoordinateLsa, NameLsa, retrieveDataset, RouterDataset, verifier } from "./model/mod";
 
@@ -6,6 +6,8 @@ export interface NetworkProfile {
   network: Name;
   routerNames: readonly Name[];
   show: "coordinates" | "adjacencies";
+  fwHint?: FwHint;
+  noVerify?: boolean;
 }
 
 export const NetworkProfile: Record<string, NetworkProfile> = {
@@ -27,15 +29,29 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
     ],
     show: "adjacencies",
   },
+  pcnl: {
+    network: new Name("/pcnl"),
+    routerNames: [
+      new Name("/pcnl/ndn-testbed/_/%C1.Router/BJ-01"),
+      new Name("/pcnl/ndn-testbed/_/%C1.Router/HK-01"),
+      new Name("/pcnl/ndn-testbed/_/%C1.Router/SZ-01"),
+    ],
+    show: "adjacencies",
+    fwHint: new FwHint("/yoursunny"),
+    noVerify: true,
+  },
 };
 
 export async function fetchDataset({
   routerNames,
   show,
+  fwHint,
+  noVerify,
 }: NetworkProfile, signal: AbortSignal): Promise<RouterDataset> {
   const options = {
     signal,
-    verifier,
+    fwHint,
+    verifier: noVerify ? noopSigning : verifier,
   };
   // https://github.com/dustinspecker/obj-props/issues/4
   // eslint-disable-next-line no-use-extend-native/no-use-extend-native
