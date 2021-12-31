@@ -34,6 +34,20 @@ fd00ff0f32303431303430375430313138343917463044022029f81a3b64
 5fad1f9906e1c34b4357d3c50c6c6414abfaca3b3804a54e05f48c51091d
 5d`;
 
+// ndnpeek, retrieved on 2021-12-30
+const PCNL_ROOT_20211230_HEX = `
+06fd013a0732080470636e6c080b6e646e2d7465737462656408034b4559
+08084ff99e35dd26ff5f080473656c6636080000017dfb182aa414091801
+0219040036ee80155b3059301306072a8648ce3d020106082a8648ce3d03
+010703420004912170fba5210b8c4ed2a2ffa024637649e896ed25b51bc0
+23bb79c245c8b3a032f65443dc44e5534734539a9f4475d997c293f2aef6
+d402a6f0eefc37015a0b16531b01031c240722080470636e6c080b6e646e
+2d7465737462656408034b455908084ff99e35dd26ff5ffd00fd26fd00fe
+0f313937303031303154303030303030fd00ff0f32303431313232325430
+383533323417473045022100be7689fa22338ca1d1fd26f70ffcc3442abc
+ee44cd6f7d8caf2e564c3469db4502205f3fd535e325aa72c9f9fa102e22
+5c1e072ca4696d7ed99294c806e9b0f4daef`;
+
 function importRootCert(hex: string): Certificate {
   const data = new Decoder(fromHex(hex.replace(/\s+/g, ""))).decode(Data);
   return Certificate.fromData(data);
@@ -42,6 +56,7 @@ function importRootCert(hex: string): Certificate {
 const trustAnchors = [
   NDN_TESTBED_ROOT_X3_HEX,
   YOURSUNNY_ROOT_1618190329576_HEX,
+  PCNL_ROOT_20211230_HEX,
 ].map(importRootCert);
 const schema = new TrustSchema(policy, trustAnchors);
 export const verifier: Verifier = new TrustSchemaVerifier({ schema });
