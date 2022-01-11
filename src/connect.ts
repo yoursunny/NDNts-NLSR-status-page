@@ -1,4 +1,5 @@
 import { connectToNetwork, connectToRouter } from "@ndn/autoconfig";
+import { H3Transport } from "@ndn/quic-transport";
 
 export async function connect(): Promise<string> {
   void connectToRouter("wss://nrt.ws.ndn.net.eu.org/ws/", {
@@ -6,6 +7,7 @@ export async function connect(): Promise<string> {
   });
 
   const faces = await connectToNetwork({
+    H3Transport,
     fallback: ["hobo.cs.arizona.edu", "ndn.qub.ac.uk", "ndntestbed.iiit.ac.in"],
     testConnection: [
       "/ndn/edu/arizona/ping/*",

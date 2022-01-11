@@ -14,6 +14,7 @@
     "@ndn/fw": "https://ndnts-nightly.ndn.today/fw.tgz",
     "@ndn/keychain": "https://ndnts-nightly.ndn.today/keychain.tgz",
     "@ndn/packet": "https://ndnts-nightly.ndn.today/packet.tgz",
+    "@ndn/quic-transport": "https://ndnts-nightly.ndn.today/quic-transport.tgz",
     "@ndn/segmented-object": "https://ndnts-nightly.ndn.today/segmented-object.tgz",
     "@ndn/tlv": "https://ndnts-nightly.ndn.today/tlv.tgz",
     "@ndn/trust-schema": "https://ndnts-nightly.ndn.today/trust-schema.tgz",
@@ -24,12 +25,12 @@
     "preact": "^10.6.4"
   },
   "devDependencies": {
-    "@yoursunny/xo-config": "^0.45.1",
+    "@yoursunny/xo-config": "^0.47.0",
     "ts-loader": "^9.2.6",
     "tsm": "^2.2.1",
     "typescript": "~4.5.4",
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.7.1"
+    "webpack-dev-server": "^4.7.2"
   }
 }
