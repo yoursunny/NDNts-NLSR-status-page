@@ -1,5 +1,5 @@
 import { AltUri, Name } from "@ndn/packet";
-import { toHex } from "@ndn/tlv";
+import { toHex } from "@ndn/util";
 import { Component, Fragment, h } from "preact";
 
 import { RouterLsaData, shortenName } from "../model/mod";

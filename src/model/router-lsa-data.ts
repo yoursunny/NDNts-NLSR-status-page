@@ -1,6 +1,7 @@
 import type { ComponentLike, Name, Verifier } from "@ndn/packet";
 import { discoverVersion, fetch } from "@ndn/segmented-object";
-import { Decodable, Decoder, toHex } from "@ndn/tlv";
+import { type Decodable, Decoder } from "@ndn/tlv";
+import { toHex } from "@ndn/util";
 
 import type { AdjacencyLsa } from "./adjacency-lsa";
 import type { CoordinateLsa } from "./coordinate-lsa";

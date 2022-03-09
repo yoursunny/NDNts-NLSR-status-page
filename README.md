@@ -22,7 +22,7 @@ This project demonstrates these NDNts capabilities:
 
 Build instructions:
 
-1. `npm install` to install dependencies.
-2. `npm run build-trust-policy` to generate trust schema policy code.
-3. `npm run serve` to start development server.
-4. `npm run build` to compile production site in `public/`.
+1. `corepack pnpm install` to install dependencies.
+2. `corepack pnpm build-trust-policy` to generate trust schema policy code.
+3. `corepack pnpm serve` to start development server.
+4. `corepack pnpm build` to compile production site in `public/`.

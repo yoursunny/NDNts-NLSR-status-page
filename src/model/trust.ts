@@ -1,7 +1,8 @@
 import { Certificate } from "@ndn/keychain";
 import { Data, Verifier } from "@ndn/packet";
-import { Decoder, fromHex } from "@ndn/tlv";
+import { Decoder } from "@ndn/tlv";
 import { TrustSchema, TrustSchemaVerifier } from "@ndn/trust-schema";
+import { fromHex } from "@ndn/util";
 
 import { policy } from "./trust-policy";
 

@@ -1,5 +1,6 @@
 import { Component, Name, TT } from "@ndn/packet";
-import { Decoder, Encoder, EvDecoder, NNI } from "@ndn/tlv";
+import { Decoder, EvDecoder, NNI } from "@ndn/tlv";
+import { asDataView } from "@ndn/util";
 
 const EVD = new EvDecoder<Lsa>("LsaInfo", 0x80)
   .add(TT.Name, (t, { value }) => t.originRouter = new Name(value))
@@ -17,7 +18,7 @@ export abstract class Lsa {
 }
 
 export function decodeDouble(value: Uint8Array): number {
-  return Encoder.asDataView(value).getFloat64(0, false);
+  return asDataView(value).getFloat64(0, false);
 }
 
 const C1Router = Component.from("%C1.Router");
