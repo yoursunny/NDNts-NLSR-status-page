@@ -1,9 +1,13 @@
 [build]
   command = """
   set -eo pipefail
-  rm -rf package-lock.json node_modules/\\@ndn
-  npm install
-  npm run build-trust-policy
-  npm run build
+  corepack pnpm install
+  corepack pnpm build-trust-policy
+  corepack pnpm build
+  corepack pnpm lint && git diff --exit-code
   """
   publish = "public/"
+
+[build.environment]
+  NODE_VERSION="17"
+  NPM_FLAGS="--version"
