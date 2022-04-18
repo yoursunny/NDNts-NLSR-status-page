@@ -46,8 +46,6 @@ export async function fetchDataset({
     signal,
     verifier,
   };
-  // https://github.com/dustinspecker/obj-props/issues/4
-  // eslint-disable-next-line no-use-extend-native/no-use-extend-native
   const [from, nameLsas, coordinateLsas, adjacencyLsas] = await Promise.any(routerNames.map((routerName) => Promise.all([
     routerName,
     retrieveDataset({ routerName, d: NameLsa, ...options }),
