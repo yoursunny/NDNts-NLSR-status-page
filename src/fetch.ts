@@ -42,10 +42,7 @@ export async function fetchDataset({
   routerNames,
   show,
 }: NetworkProfile, signal: AbortSignal): Promise<RouterDataset> {
-  const options = {
-    signal,
-    verifier,
-  };
+  const options = { signal, verifier };
   const [from, nameLsas, coordinateLsas, adjacencyLsas] = await Promise.any(routerNames.map((routerName) => Promise.all([
     routerName,
     retrieveDataset({ routerName, d: NameLsa, ...options }),
@@ -53,8 +50,8 @@ export async function fetchDataset({
     show === "adjacencies" ? retrieveDataset({ routerName, d: AdjacencyLsa, ...options }) : undefined,
   ])));
 
-  const originRouters = Array.from(nameLsas.keys());
-  originRouters.sort((a, b) => a.localeCompare(b));
+  const originRouters = Array.from(nameLsas, ([router]) => router);
+  originRouters.sort((a, b) => a.compare(b));
   return {
     from,
     lsas: originRouters.map((originRouter) => {

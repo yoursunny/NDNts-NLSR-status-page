@@ -45,7 +45,7 @@ export class RouterList extends Component<Props> {
     const { show } = this.props;
     return (
       <RouterView
-        key={router.originRouter}
+        key={router.originRouter.valueHex}
         router={router}
         hideCoordinate={show !== "coordinates"}
         hideAdjacency={show !== "adjacencies"}

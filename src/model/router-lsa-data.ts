@@ -1,7 +1,6 @@
-import type { ComponentLike, Name, Verifier } from "@ndn/packet";
+import { type ComponentLike, type Name, type Verifier, NameMap } from "@ndn/packet";
 import { discoverVersion, fetch } from "@ndn/segmented-object";
 import { type Decodable, Decoder } from "@ndn/tlv";
-import { toHex } from "@ndn/util";
 
 import type { AdjacencyLsa } from "./adjacency-lsa";
 import type { CoordinateLsa } from "./coordinate-lsa";
@@ -14,7 +13,7 @@ export interface RouterDataset {
 }
 
 export interface RouterLsaData {
-  originRouter: string;
+  originRouter: Name;
   name: Name;
   nameLsa: NameLsa;
   coordinateLsa?: CoordinateLsa;
@@ -26,7 +25,7 @@ export async function retrieveDataset<R extends Lsa>({
   d,
   signal,
   verifier,
-}: retrieveDataset.Options<R>): Promise<Map<string, R>> {
+}: retrieveDataset.Options<R>): Promise<NameMap<R>> {
   const name = routerName.append(...d.SUFFIX);
   const versioned = await discoverVersion(name, {
     signal,
@@ -39,10 +38,10 @@ export async function retrieveDataset<R extends Lsa>({
   });
 
   const decoder = new Decoder(dataset);
-  const m = new Map<string, R>();
+  const m = new NameMap<R>();
   while (!decoder.eof) {
     const lsa = decoder.decode(d);
-    m.set(toHex(lsa.originRouter.value), lsa);
+    m.set(lsa.originRouter, lsa);
   }
   return m;
 }

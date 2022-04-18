@@ -1,5 +1,4 @@
 import { AltUri, Name } from "@ndn/packet";
-import { toHex } from "@ndn/util";
 import { Component, Fragment, h } from "preact";
 
 import { RouterLsaData, shortenName } from "../model/mod";
@@ -18,7 +17,7 @@ export class RouterView extends Component<Props> {
       return nameLsa.names.map(this.renderRow);
     }
     return (
-      <tr key={originRouter}>
+      <tr key={originRouter.valueHex}>
         {this.renderOrigin()}
         <td/>
         {this.renderCoordinate()}
@@ -84,7 +83,7 @@ export class RouterView extends Component<Props> {
       <td rowSpan={this.rowSpan}>
         <ul>
           {adjacencyLsa.adjacencies.map((adj) => (
-            <li key={toHex(adj.name.value)} title={AltUri.ofName(adj.name)}>
+            <li key={adj.name.valueHex} title={AltUri.ofName(adj.name)}>
               {shortenName(adj.name).map(AltUri.ofComponent).join("/")}
               {" "}
               <small>({adj.cost})</small>
@@ -97,7 +96,7 @@ export class RouterView extends Component<Props> {
   }
 
   private renderRow = (name: Name, index: number) => (
-    <tr key={toHex(name.value)}>
+    <tr key={name.valueHex}>
       {index === 0 ? this.renderOrigin() : undefined}
       <td>{AltUri.ofName(name)}</td>
       {index === 0 ? [this.renderCoordinate(), this.renderAdjacency()] : undefined}
