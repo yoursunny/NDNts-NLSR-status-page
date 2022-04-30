@@ -21,7 +21,7 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
   yoursunny: {
     network: new Name("/yoursunny"),
     routerNames: [
-      new Name("/yoursunny/_/%C1.Router/dal"),
+      new Name("/yoursunny/_/%C1.Router/lax"),
       new Name("/yoursunny/_/%C1.Router/muc"),
       new Name("/yoursunny/_/%C1.Router/sin"),
     ],

@@ -1,10 +1,8 @@
 import { connectToNetwork, connectToRouter } from "@ndn/autoconfig";
-import { H3Transport as ndnH3Transport } from "@ndn/quic-transport";
-
-// disable H3Transport on Android until 2022-03-29 due to https://crbug.com/1293359
-const H3Transport = navigator.userAgent.includes("Android") && Date.now() < 1648512000000 ? undefined : ndnH3Transport;
+import { H3Transport } from "@ndn/quic-transport";
 
 export async function connect(): Promise<string> {
+  // PCNL has no peering with NDN testbed, make it go to yoursunny ndn6 network
   void connectToRouter("wss://nrt.ws.ndn.net.eu.org/ws/", {
     addRoutes: ["/pcnl"],
   });
@@ -16,7 +14,7 @@ export async function connect(): Promise<string> {
       "/ndn/edu/arizona/ping/*",
       "/ndn/uk/ac/qub/ping/*",
       "/ndn/in/ac/iiith/ping/*",
-      "/yoursunny/_/dal/ping/*",
+      "/yoursunny/_/lax/ping/*",
       "/yoursunny/_/muc/ping/*",
       "/yoursunny/_/sin/ping/*",
     ],
