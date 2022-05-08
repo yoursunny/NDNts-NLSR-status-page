@@ -13,8 +13,8 @@ export async function connect(): Promise<string> {
     testConnection: [
       "/ndn/edu/arizona/ping/*",
       "/ndn/uk/ac/qub/ping/*",
-      "/ndn/in/ac/iiith/ping/*",
-      "/yoursunny/_/lax/ping/*",
+      "/ndn/jp/waseda/ping/*",
+      "/yoursunny/_/dal/ping/*",
       "/yoursunny/_/muc/ping/*",
       "/yoursunny/_/sin/ping/*",
     ],

@@ -14,14 +14,14 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
     routerNames: [
       new Name("/ndn/edu/arizona/%C1.Router/hobo"),
       new Name("/ndn/uk/ac/qub/%C1.Router/ndn"),
-      new Name("/ndn/in/ac/iiith/%C1.Router/ndntestbed"),
+      new Name("/ndn/jp/waseda/%C1.Router/ndn-tb"),
     ],
     show: "coordinates",
   },
   yoursunny: {
     network: new Name("/yoursunny"),
     routerNames: [
-      new Name("/yoursunny/_/%C1.Router/lax"),
+      new Name("/yoursunny/_/%C1.Router/dal"),
       new Name("/yoursunny/_/%C1.Router/muc"),
       new Name("/yoursunny/_/%C1.Router/sin"),
     ],
