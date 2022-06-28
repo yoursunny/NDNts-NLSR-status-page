@@ -6,10 +6,10 @@
     "lint": "xo-yoursunny --fix",
     "serve": "webpack serve --mode=development"
   },
-  "packageManager": "pnpm@7.0.1",
+  "packageManager": "pnpm@7.3.0",
   "dependencies": {
-    "@bugsnag/browser": "^7.16.2",
-    "@bugsnag/plugin-react": "^7.16.4",
+    "@bugsnag/browser": "^7.17.0",
+    "@bugsnag/plugin-react": "^7.17.0",
     "@ndn/autoconfig": "https://ndnts-nightly.ndn.today/autoconfig.tgz",
     "@ndn/endpoint": "https://ndnts-nightly.ndn.today/endpoint.tgz",
     "@ndn/fw": "https://ndnts-nightly.ndn.today/fw.tgz",
@@ -21,18 +21,18 @@
     "@ndn/trust-schema": "https://ndnts-nightly.ndn.today/trust-schema.tgz",
     "@ndn/util": "https://ndnts-nightly.ndn.today/util.tgz",
     "@ndn/ws-transport": "https://ndnts-nightly.ndn.today/ws-transport.tgz",
-    "@typescript/lib-dom": "npm:@types/web@0.0.64",
+    "@typescript/lib-dom": "npm:@types/web@0.0.68",
     "ga-lite": "^2.1.6",
     "hashquery": "^1.0.0",
-    "preact": "^10.7.2"
+    "preact": "^10.8.2"
   },
   "devDependencies": {
-    "@yoursunny/xo-config": "0.48.4",
-    "ts-loader": "^9.3.0",
+    "@yoursunny/xo-config": "0.49.0",
+    "ts-loader": "^9.3.1",
     "tsm": "^2.2.1",
-    "typescript": "~4.6.4",
-    "webpack": "^5.72.0",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.9.0"
+    "typescript": "~4.7.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.2"
   }
 }
