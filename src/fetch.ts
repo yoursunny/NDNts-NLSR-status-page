@@ -1,6 +1,6 @@
 import { Name } from "@ndn/packet";
 
-import { AdjacencyLsa, CoordinateLsa, NameLsa, retrieveDataset, RouterDataset, verifier } from "./model/mod";
+import { type RouterDataset, AdjacencyLsa, CoordinateLsa, NameLsa, retrieveDataset, verifier } from "./model/mod";
 
 export interface NetworkProfile {
   network: Name;

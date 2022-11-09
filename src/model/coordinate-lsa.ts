@@ -1,4 +1,4 @@
-import { Decoder, EvDecoder } from "@ndn/tlv";
+import { type Decoder, EvDecoder } from "@ndn/tlv";
 
 import { decodeDouble, Lsa } from "./lsa";
 

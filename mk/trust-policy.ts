@@ -1,6 +1,7 @@
 #!/usr/bin/env -S node --loader tsm
-import { printESM, versec2021 } from "@ndn/trust-schema";
 import { writeFileSync } from "node:fs";
+
+import { printESM, versec2021 } from "@ndn/trust-schema";
 
 const policy = versec2021.load(`
 _network: "ndn" | "yoursunny" | ("pcnl"/"ndn-testbed")

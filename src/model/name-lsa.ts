@@ -1,5 +1,5 @@
 import { Name, TT } from "@ndn/packet";
-import { Decoder, EvDecoder } from "@ndn/tlv";
+import { type Decoder, EvDecoder } from "@ndn/tlv";
 
 import { Lsa } from "./lsa";
 

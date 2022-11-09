@@ -1,5 +1,5 @@
 import { Component, Name, TT } from "@ndn/packet";
-import { Decoder, EvDecoder, NNI } from "@ndn/tlv";
+import { type Decoder, EvDecoder, NNI } from "@ndn/tlv";
 import { asDataView } from "@ndn/util";
 
 const EVD = new EvDecoder<Lsa>("LsaInfo", 0x80)
@@ -13,7 +13,7 @@ export abstract class Lsa {
   }
 
   public originRouter = new Name();
-  public sequenceNumber = BigInt(0);
+  public sequenceNumber = 0n;
   public expirationTime = "";
 }
 

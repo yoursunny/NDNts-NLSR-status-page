@@ -1,7 +1,7 @@
-import { AltUri, Name } from "@ndn/packet";
+import { type Name, AltUri } from "@ndn/packet";
 import { Component, Fragment, h } from "preact";
 
-import { RouterLsaData, shortenName } from "../model/mod";
+import { type RouterLsaData, shortenName } from "../model/mod";
 import { LsaInfoDetail } from "./lsa-info-detail";
 
 interface Props {

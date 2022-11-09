@@ -4,7 +4,7 @@ import { get as hashGet, set as hashSet } from "hashquery";
 import { Component, Fragment, h } from "preact";
 
 import { fetchDataset, NetworkProfile } from "../fetch";
-import { RouterLsaData } from "../model/mod";
+import type { RouterLsaData } from "../model/mod";
 import { RouterList } from "./router-list";
 
 interface Props {
