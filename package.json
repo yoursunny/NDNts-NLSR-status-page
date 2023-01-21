@@ -22,7 +22,6 @@
     "@ndn/util": "https://ndnts-nightly.ndn.today/util.tgz",
     "@ndn/ws-transport": "https://ndnts-nightly.ndn.today/ws-transport.tgz",
     "@typescript/lib-dom": "npm:@types/web@0.0.89",
-    "ga-lite": "^2.1.6",
     "hashquery": "^1.0.0",
     "preact": "^10.11.3"
   },
