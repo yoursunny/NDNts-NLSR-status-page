@@ -1,4 +1,4 @@
-import { type Name, AltUri } from "@ndn/packet";
+import { AltUri, type Name } from "@ndn/packet";
 import { Component, Fragment, h } from "preact";
 
 import { type RouterLsaData, shortenName } from "../model/mod";

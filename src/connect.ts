@@ -4,10 +4,10 @@ import { H3Transport } from "@ndn/quic-transport";
 export async function connect(): Promise<string> {
   const faces = await connectToNetwork({
     H3Transport,
-    fallback: ["hobo.cs.arizona.edu", "ndn.qub.ac.uk", "ndntestbed.iiit.ac.in"],
+    fallback: ["hobo.cs.arizona.edu", "ndn-testbed.ewi.tudelft.nl", "ndntestbed.iiit.ac.in"],
     testConnection: [
       "/ndn/edu/arizona/ping/*",
-      "/ndn/uk/ac/qub/ping/*",
+      "/ndn/nl/delft/ping/*",
       "/ndn/in/ac/iiith/ping/*",
       "/yoursunny/_/mdw/ping/*",
       "/yoursunny/_/ley/ping/*",

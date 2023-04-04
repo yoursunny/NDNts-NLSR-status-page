@@ -1,6 +1,6 @@
 import { Name } from "@ndn/packet";
 
-import { type RouterDataset, AdjacencyLsa, CoordinateLsa, NameLsa, retrieveDataset, verifier } from "./model/mod";
+import { AdjacencyLsa, CoordinateLsa, NameLsa, retrieveDataset, type RouterDataset, verifier } from "./model/mod";
 
 export interface NetworkProfile {
   network: Name;
@@ -13,7 +13,7 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
     network: new Name("/ndn"),
     routerNames: [
       new Name("/ndn/edu/arizona/%C1.Router/hobo"),
-      new Name("/ndn/uk/ac/qub/%C1.Router/ndn"),
+      new Name("/ndn/nl/delft/%C1.Router/ndn-testbed"),
       new Name("/ndn/in/ac/iiith/%C1.Router/ndntestbed"),
     ],
     show: "coordinates",

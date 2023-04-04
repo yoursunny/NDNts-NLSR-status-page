@@ -1,4 +1,4 @@
-import { type ComponentLike, type Name, type Verifier, NameMap } from "@ndn/packet";
+import { type ComponentLike, type Name, NameMap, type Verifier } from "@ndn/packet";
 import { discoverVersion, fetch } from "@ndn/segmented-object";
 import { type Decodable, Decoder } from "@ndn/tlv";
 

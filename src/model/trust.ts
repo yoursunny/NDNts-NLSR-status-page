@@ -1,5 +1,5 @@
 import { Certificate } from "@ndn/keychain";
-import { type Verifier, Data } from "@ndn/packet";
+import { Data, type Verifier } from "@ndn/packet";
 import { Decoder } from "@ndn/tlv";
 import { TrustSchema, TrustSchemaVerifier } from "@ndn/trust-schema";
 import { fromHex } from "@ndn/util";
