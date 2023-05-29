@@ -1,9 +1,9 @@
 #!/usr/bin/env -S node --loader tsm
 import { writeFileSync } from "node:fs";
 
-import { printESM, versec2021 } from "@ndn/trust-schema";
+import { printESM, versec } from "@ndn/trust-schema";
 
-const policy = versec2021.load(`
+const policy = versec.load(`
 _network: "ndn" | "yoursunny" | ("pcnl"/"ndn-testbed")
 _sitename: s1 | (s1/s2) | (s1/s2/s3)
 _routername: _network/_sitename/"%C1.Router"/routerid
