@@ -1,27 +1,18 @@
-import { connectToNetwork, connectToRouter } from "@ndn/autoconfig";
+import { connectToNetwork } from "@ndn/autoconfig";
 import { H3Transport } from "@ndn/quic-transport";
 
 export async function connect(): Promise<string> {
   const faces = await connectToNetwork({
     H3Transport,
-    fallback: ["hobo.cs.arizona.edu", "ndn-testbed.ewi.tudelft.nl", "ndntestbed.iiit.ac.in"],
+    fallback: ["hobo.cs.arizona.edu", "vnetlab.gcom.di.uminho.pt", "ndntestbed.iiit.ac.in"],
     testConnection: [
       "/ndn/edu/arizona/ping/*",
-      "/ndn/nl/delft/ping/*",
+      "/ndn/pt/uminho/ping/*",
       "/ndn/in/ac/iiith/ping/*",
       "/yoursunny/_/mdw/ping/*",
       "/yoursunny/_/ley/ping/*",
       "/yoursunny/_/bom/ping/*",
     ],
   });
-  const uri = `${faces[0]}`;
-
-  if (!uri.includes(".ndn.net.eu.org")) {
-    // PCNL does not peer with NDN testbed, make it go to yoursunny ndn6 network
-    void connectToRouter("wss://sea.ws.ndn.net.eu.org/ws/", {
-      addRoutes: ["/pcnl"],
-    });
-  }
-
-  return uri;
+  return `${faces[0]}`;
 }

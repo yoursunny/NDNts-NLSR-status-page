@@ -13,7 +13,7 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
     network: new Name("/ndn"),
     routerNames: [
       new Name("/ndn/edu/arizona/%C1.Router/hobo"),
-      new Name("/ndn/nl/delft/%C1.Router/ndn-testbed"),
+      new Name("/ndn/pt/uminho/%C1.Router/vnetlab"),
       new Name("/ndn/in/ac/iiith/%C1.Router/ndntestbed"),
     ],
     show: "coordinates",
@@ -24,15 +24,6 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
       new Name("/yoursunny/_/%C1.Router/mdw"),
       new Name("/yoursunny/_/%C1.Router/ley"),
       new Name("/yoursunny/_/%C1.Router/bom"),
-    ],
-    show: "adjacencies",
-  },
-  pcnl: {
-    network: new Name("/pcnl"),
-    routerNames: [
-      new Name("/pcnl/ndn-testbed/_/%C1.Router/BJ-01"),
-      new Name("/pcnl/ndn-testbed/_/%C1.Router/HK-01"),
-      new Name("/pcnl/ndn-testbed/_/%C1.Router/SZ-01"),
     ],
     show: "adjacencies",
   },
