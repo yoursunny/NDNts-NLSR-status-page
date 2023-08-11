@@ -14,7 +14,7 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
     routerNames: [
       new Name("/ndn/edu/arizona/%C1.Router/hobo"),
       new Name("/ndn/pt/uminho/%C1.Router/vnetlab"),
-      new Name("/ndn/in/ac/iiith/%C1.Router/ndntestbed"),
+      new Name("/ndn/jp/waseda/%C1.Router/ndn-tb"),
     ],
     show: "coordinates",
   },
