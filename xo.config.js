@@ -23,7 +23,11 @@ module.exports = {
       files: [
         "./src/**/*.tsx",
       ],
-      ...merge(js, ts, web, preact),
+      ...merge(js, ts, web, preact, {
+        rules: {
+          "etc/no-implicit-any-catch": "off",
+        },
+      }),
     },
   ],
 };

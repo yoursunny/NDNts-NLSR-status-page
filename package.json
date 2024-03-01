@@ -6,9 +6,9 @@
     "lint": "xo-yoursunny --fix",
     "serve": "webpack serve --mode=development"
   },
-  "packageManager": "pnpm@8.6.12",
+  "packageManager": "pnpm@8.15.4+sha256.cea6d0bdf2de3a0549582da3983c70c92ffc577ff4410cbf190817ddc35137c2",
   "dependencies": {
-    "@bugsnag/browser": "^7.20.2",
+    "@bugsnag/browser": "^7.22.4",
     "@bugsnag/plugin-react": "^7.19.0",
     "@ndn/autoconfig": "https://ndnts-nightly.ndn.today/autoconfig.tgz",
     "@ndn/endpoint": "https://ndnts-nightly.ndn.today/endpoint.tgz",
@@ -20,17 +20,17 @@
     "@ndn/tlv": "https://ndnts-nightly.ndn.today/tlv.tgz",
     "@ndn/trust-schema": "https://ndnts-nightly.ndn.today/trust-schema.tgz",
     "@ndn/util": "https://ndnts-nightly.ndn.today/util.tgz",
-    "@typescript/lib-dom": "npm:@types/web@0.0.112",
+    "@typescript/lib-dom": "npm:@types/web@0.0.140",
     "hashquery": "^1.0.0",
-    "preact": "^10.16.0"
+    "preact": "^10.19.6"
   },
   "devDependencies": {
-    "@yoursunny/xo-config": "0.55.0",
-    "ts-loader": "^9.4.4",
+    "@yoursunny/xo-config": "0.57.2",
+    "ts-loader": "^9.5.1",
     "tsm": "^2.3.0",
-    "typescript": "~5.1.6",
-    "webpack": "^5.88.2",
+    "typescript": "~5.3.3",
+    "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^5.0.2"
   }
 }

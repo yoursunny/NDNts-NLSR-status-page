@@ -16,7 +16,7 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
       new Name("/ndn/pt/uminho/%C1.Router/vnetlab"),
       new Name("/ndn/jp/waseda/%C1.Router/ndn-tb"),
     ],
-    show: "coordinates",
+    show: "adjacencies",
   },
   yoursunny: {
     network: new Name("/yoursunny"),
