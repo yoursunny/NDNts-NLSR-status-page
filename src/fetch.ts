@@ -1,4 +1,5 @@
 import { Name } from "@ndn/packet";
+import { console } from "@ndn/util";
 
 import { AdjacencyLsa, CoordinateLsa, NameLsa, retrieveDataset, type RouterDataset, verifier } from "./model/mod";
 
@@ -34,12 +35,19 @@ export async function fetchDataset({
   show,
 }: NetworkProfile, signal: AbortSignal): Promise<RouterDataset> {
   const options = { signal, verifier };
-  const [from, nameLsas, coordinateLsas, adjacencyLsas] = await Promise.any(routerNames.map((routerName) => Promise.all([
-    routerName,
-    retrieveDataset({ routerName, d: NameLsa, ...options }),
-    show === "coordinates" ? retrieveDataset({ routerName, d: CoordinateLsa, ...options }) : undefined,
-    show === "adjacencies" ? retrieveDataset({ routerName, d: AdjacencyLsa, ...options }) : undefined,
-  ])));
+  const [from, nameLsas, coordinateLsas, adjacencyLsas] = await Promise.any(routerNames.map(async (routerName) => {
+    try {
+      return await Promise.all([
+        routerName,
+        retrieveDataset({ routerName, d: NameLsa, ...options }),
+        show === "coordinates" ? retrieveDataset({ routerName, d: CoordinateLsa, ...options }) : undefined,
+        show === "adjacencies" ? retrieveDataset({ routerName, d: AdjacencyLsa, ...options }) : undefined,
+      ]);
+    } catch (err: unknown) {
+      console.warn(`${routerName} ${err}`);
+      throw err;
+    }
+  }));
 
   const originRouters = Array.from(nameLsas, ([router]) => router);
   originRouters.sort((a, b) => a.compare(b));

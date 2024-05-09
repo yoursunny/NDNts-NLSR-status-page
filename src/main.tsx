@@ -1,8 +1,7 @@
 import Bugsnag from "@bugsnag/browser";
 import BugsnagPluginReact from "@bugsnag/plugin-react";
 import * as Preact from "preact";
-
-const { Fragment, h, render } = Preact;
+import { Fragment, h, render } from "preact";
 
 import { App } from "./components/app";
 import { connect } from "./connect";
