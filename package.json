@@ -6,10 +6,10 @@
     "lint": "xo-yoursunny --fix",
     "serve": "webpack serve --mode=development"
   },
-  "packageManager": "pnpm@9.1.0+sha256.22e36fba7f4880ecf749a5ca128b8435da085ecd49575e7fb9e64d6bf4fad394",
+  "packageManager": "pnpm@9.14.2+sha512.6e2baf77d06b9362294152c851c4f278ede37ab1eba3a55fda317a4a17b209f4dbb973fb250a77abc463a341fcb1f17f17cfa24091c4eb319cda0d9b84278387",
   "dependencies": {
-    "@bugsnag/browser": "^7.22.7",
-    "@bugsnag/plugin-react": "^7.22.7",
+    "@bugsnag/browser": "^8.1.2",
+    "@bugsnag/plugin-react": "^8.1.1",
     "@ndn/autoconfig": "https://ndnts-nightly.ndn.today/autoconfig.tgz",
     "@ndn/keychain": "https://ndnts-nightly.ndn.today/keychain.tgz",
     "@ndn/packet": "https://ndnts-nightly.ndn.today/packet.tgz",
@@ -18,17 +18,17 @@
     "@ndn/tlv": "https://ndnts-nightly.ndn.today/tlv.tgz",
     "@ndn/trust-schema": "https://ndnts-nightly.ndn.today/trust-schema.tgz",
     "@ndn/util": "https://ndnts-nightly.ndn.today/util.tgz",
-    "@typescript/lib-dom": "npm:@types/web@0.0.143",
+    "@typescript/lib-dom": "npm:@types/web@0.0.183",
     "hashquery": "^1.0.0",
-    "preact": "^10.21.0"
+    "preact": "^10.25.0"
   },
   "devDependencies": {
-    "@yoursunny/xo-config": "0.58.0",
+    "@yoursunny/xo-config": "0.59.0",
     "ts-loader": "^9.5.1",
-    "tsx": "^4.9.3",
-    "typescript": "~5.4.5",
-    "webpack": "^5.91.0",
+    "tsx": "^4.19.2",
+    "typescript": "~5.7.2",
+    "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4"
+    "webpack-dev-server": "^5.1.0"
   }
 }

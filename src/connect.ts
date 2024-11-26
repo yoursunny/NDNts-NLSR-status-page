@@ -10,7 +10,7 @@ export async function connect(): Promise<string> {
       "/ndn/pt/uminho/ping/*",
       "/ndn/jp/waseda/ping/*",
       "/yoursunny/_/mdw/ping/*",
-      "/yoursunny/_/ley/ping/*",
+      "/yoursunny/_/lil/ping/*",
       "/yoursunny/_/bom/ping/*",
     ],
   });

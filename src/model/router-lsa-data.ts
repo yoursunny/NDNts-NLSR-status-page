@@ -26,16 +26,10 @@ export async function retrieveDataset<R extends Lsa>({
   signal,
   verifier,
 }: retrieveDataset.Options<R>): Promise<NameMap<R>> {
+  const cOpts = { signal, verifier };
   const name = routerName.append(...d.SUFFIX);
-  const versioned = await discoverVersion(name, {
-    signal,
-    verifier,
-  });
-
-  const dataset = await fetch(versioned, {
-    signal,
-    verifier,
-  });
+  const versioned = await discoverVersion(name, { cOpts });
+  const dataset = await fetch(versioned, { cOpts });
 
   const decoder = new Decoder(dataset);
   const m = new NameMap<R>();
