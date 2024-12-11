@@ -1,21 +1,10 @@
-#!/usr/bin/env -S node --loader tsm
-import { writeFileSync } from "node:fs";
+import { readFile, writeFile } from "node:fs/promises";
 
-import { printESM, versec } from "@ndn/trust-schema";
+import { LvsModel, toPolicy } from "@ndn/lvs";
+import { Decoder } from "@ndn/tlv";
+import { printESM } from "@ndn/trust-schema";
 
-const policy = versec.load(`
-_network: "ndn" | "yoursunny"
-_sitename: s1 | (s1/s2) | (s1/s2/s3)
-_routername: _network/_sitename/"%C1.Router"/routerid
+const model = Decoder.decode(await readFile("mk/trust-policy.tlv"), LvsModel);
+const policy = toPolicy(model);
 
-rootcert: _network/_CERT
-sitecert: _network/_sitename/_CERT
-operatorcert: _network/_sitename/"%C1.Operator"/opid/_CERT
-routercert: _routername/_CERT
-lsdbdata: _routername/"nlsr"/"lsdb"/lsatype/version/segment
-
-lsdbdata <= routercert <= operatorcert <= sitecert <= rootcert
-_CERT: "KEY"/_/_/_
-`);
-
-writeFileSync("src/model/trust-policy.ts", printESM(policy));
+await writeFile("src/model/trust-policy.ts", printESM(policy));
