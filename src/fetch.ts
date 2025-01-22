@@ -22,9 +22,9 @@ export const NetworkProfile: Record<string, NetworkProfile> = {
   yoursunny: {
     network: new Name("/yoursunny"),
     routerNames: [
-      new Name("/yoursunny/_/%C1.Router/mdw"),
-      new Name("/yoursunny/_/%C1.Router/ley"),
-      new Name("/yoursunny/_/%C1.Router/bom"),
+      new Name("/yoursunny/_/%C1.Router/iah"),
+      new Name("/yoursunny/_/%C1.Router/otp"),
+      new Name("/yoursunny/_/%C1.Router/syd"),
     ],
     show: "adjacencies",
   },

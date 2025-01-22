@@ -9,9 +9,9 @@ export async function connect(): Promise<string> {
       "/ndn/edu/arizona/ping/*",
       "/ndn/pt/uminho/ping/*",
       "/ndn/jp/waseda/ping/*",
-      "/yoursunny/_/mdw/ping/*",
-      "/yoursunny/_/lil/ping/*",
-      "/yoursunny/_/bom/ping/*",
+      "/yoursunny/_/iah/ping/*",
+      "/yoursunny/_/otp/ping/*",
+      "/yoursunny/_/syd/ping/*",
     ],
   });
   return `${faces[0]}`;
