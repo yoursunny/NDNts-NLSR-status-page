@@ -1,7 +1,7 @@
-import { AltUri, type Name } from "@ndn/packet";
+import { AltUri } from "@ndn/packet";
 import { Component, Fragment, h } from "preact";
 
-import { type RouterLsaData, shortenName } from "../model/mod";
+import { type PrefixInfo, type RouterLsaData, shortenName } from "../model/mod";
 import { LsaInfoDetail } from "./lsa-info-detail";
 
 interface Props {
@@ -13,8 +13,8 @@ interface Props {
 export class RouterView extends Component<Props> {
   public render() {
     const { originRouter, nameLsa } = this.props.router;
-    if (nameLsa.names.length > 0) {
-      return nameLsa.names.map(this.renderRow);
+    if (nameLsa.prefixes.length > 0) {
+      return nameLsa.prefixes.map(this.renderRow);
     }
     return (
       <tr key={originRouter.valueHex}>
@@ -28,7 +28,7 @@ export class RouterView extends Component<Props> {
 
   private get rowSpan() {
     const { nameLsa } = this.props.router;
-    return Math.max(1, nameLsa.names.length);
+    return Math.max(1, nameLsa.prefixes.length);
   }
 
   private renderOrigin() {
@@ -95,10 +95,14 @@ export class RouterView extends Component<Props> {
     );
   }
 
-  private renderRow = (name: Name, index: number) => (
+  private renderRow = ({ name, cost = -1 }: PrefixInfo, index: number) => (
     <tr key={name.valueHex}>
       {index === 0 ? this.renderOrigin() : undefined}
-      <td>{AltUri.ofName(name)}</td>
+      <td>
+        {AltUri.ofName(name)}
+        {" "}
+        <small>({cost})</small>
+      </td>
       {index === 0 ? [this.renderCoordinate(), this.renderAdjacency()] : undefined}
     </tr>
   );
