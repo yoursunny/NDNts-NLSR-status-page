@@ -12,9 +12,7 @@ const NameLsaEVD = new EvDecoder<NameLsa>("NameLsa", 0x89)
   .add(TT.Name, (t, { decoder }) => t.prefixes.push({
     name: decoder.decode(Name),
   }), { repeat: true })
-  .add(0x92, (t, { vd }) => t.prefixes.push(
-    PrefixInfoEVD.decodeValue({} as PrefixInfo, vd),
-  ), { repeat: true });
+  .add(0x92, (t, { vd }) => t.prefixes.push(PrefixInfoEVD.decodeValue({} as PrefixInfo, vd)), { repeat: true });
 
 export class NameLsa extends Lsa {
   public static readonly SUFFIX = ["nlsr", "lsdb", "names"];

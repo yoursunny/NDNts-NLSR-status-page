@@ -6,7 +6,7 @@ import { Fragment, h, render } from "preact";
 import { App } from "./components/app";
 import { connect } from "./connect";
 
-if (location.hostname.endsWith(".ndn.today")) {
+if (globalThis.location.hostname.endsWith(".ndn.today")) {
   Bugsnag.start({
     apiKey: "ea4b8d8f54ab51480dd721055e3cc0a9",
     plugins: [new BugsnagPluginReact(Preact)],
@@ -32,7 +32,8 @@ async function main() {
       <ErrorBoundary>
         <App connectedRouter={connectedRouter}/>
       </ErrorBoundary>
-    ), document.querySelector("#app")!);
+    ), document.querySelector("#app")!,
+  );
 }
 
 document.addEventListener("DOMContentLoaded", main);

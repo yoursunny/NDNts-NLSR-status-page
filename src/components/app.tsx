@@ -1,10 +1,11 @@
 import Bugsnag from "@bugsnag/browser";
 import { AltUri } from "@ndn/packet";
+// @ts-expect-error no types
 import { get as hashGet, set as hashSet } from "hashquery";
 import { Component, Fragment, h } from "preact";
 
 import { fetchDataset, NetworkProfile } from "../fetch";
-import type { RouterLsaData } from "../model/mod";
+import type { RouterDataset, RouterLsaData } from "../model/mod";
 import { RouterList } from "./router-list";
 
 interface Props {
@@ -35,8 +36,8 @@ export class App extends Component<Props, State> {
   abort = new AbortController();
 
   public componentDidMount() {
-    this.refreshTimer = setInterval(this.refresh, 10000) as unknown as number;
-    this.refresh();
+    this.refreshTimer = setInterval(this.refresh, 10000);
+    void this.refresh();
   }
 
   public componentWillUnmount() {
@@ -67,28 +68,33 @@ export class App extends Component<Props, State> {
     return NetworkProfile[this.state.network];
   }
 
-  private handleChooseNetwork = (id: keyof typeof NetworkProfile) =>
+  private readonly handleChooseNetwork = (id: keyof typeof NetworkProfile) =>
     (evt: MouseEvent) => {
       evt.preventDefault();
       hashSet("network", id);
       this.setState({ network: id, from: "", lsas: [] }, this.refresh);
     };
 
-  private refresh = () => {
+  private readonly refresh = async () => {
     this.abort.abort();
     const abort = new AbortController();
     this.abort = abort;
-    fetchDataset(this.network, abort.signal)
-      .then(
-        ({ from, lsas }) => this.setState({ from: AltUri.ofName(from), lsas }),
-        (err) => {
-          if (abort.signal.aborted) {
-            return;
-          }
-          console.error(err);
-          Bugsnag.notify(err);
-        },
-      )
-      .finally(() => abort.abort());
+
+    let dataset: RouterDataset;
+    try {
+      dataset = await fetchDataset(this.network, abort.signal);
+    } catch (err: any) {
+      if (abort.signal.aborted) {
+        return;
+      }
+      console.error(err);
+      Bugsnag.notify(err);
+      return;
+    } finally {
+      abort.abort();
+    }
+
+    const { from, lsas } = dataset;
+    this.setState({ from: AltUri.ofName(from), lsas });
   };
 }
