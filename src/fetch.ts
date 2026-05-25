@@ -44,7 +44,9 @@ export async function fetchDataset({
         show === "adjacencies" ? retrieveDataset({ routerName, d: AdjacencyLsa, ...options }) : undefined,
       ]);
     } catch (err: unknown) {
-      console.warn(`${routerName} ${err}`);
+      if (!signal.aborted) {
+        console.warn(`${routerName} ${err}`);
+      }
       throw err;
     }
   }));

@@ -1,11 +1,11 @@
 [build]
   command = """
   set -euo pipefail
-  rm -rf node_modules/@ndn node_modules/.pnpm/@ndn*
   corepack pnpm install
   corepack pnpm build-trust-policy
   corepack pnpm build
   corepack pnpm lint && git diff --exit-code
+  rm -rf pnpm-lock.yaml node_modules
   """
   publish = "public/"
 
