@@ -38,7 +38,7 @@ export async function fetchDataset({
   const [from, nameLsas, coordinateLsas, adjacencyLsas] = await Promise.any(routerNames.map(async (routerName) => {
     try {
       return await Promise.all([
-        routerName,
+        Promise.resolve(routerName),
         retrieveDataset({ routerName, d: NameLsa, ...options }),
         show === "coordinates" ? retrieveDataset({ routerName, d: CoordinateLsa, ...options }) : undefined,
         show === "adjacencies" ? retrieveDataset({ routerName, d: AdjacencyLsa, ...options }) : undefined,
