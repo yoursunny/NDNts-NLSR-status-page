@@ -1,7 +1,8 @@
-onlyBuiltDependencies:
-  - bufferutil
-  - esbuild
-  - unrs-resolver
+allowBuilds:
+  bufferutil: true
+  unrs-resolver: true
+
+blockExoticSubdeps: false
 
 publicHoistPattern:
   - "@types/*"

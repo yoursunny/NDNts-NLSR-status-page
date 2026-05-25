@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "build": "webpack",
-    "build-trust-policy": "tsx mk/trust-policy.ts",
+    "build-trust-policy": "node mk/trust-policy.mjs",
     "lint": "xo-yoursunny --fix",
     "serve": "webpack serve --mode=development"
   },
@@ -26,7 +26,6 @@
   "devDependencies": {
     "@yoursunny/xo-config": "0.1002.0",
     "ts-loader": "^9.5.7",
-    "tsx": "^4.22.3",
     "typescript": "~6.0.3",
     "webpack": "^5.107.1",
     "webpack-cli": "^7.0.2",
